@@ -16,7 +16,7 @@
 <span class="text-xs font-black tracking-widest uppercase font-label">Sorteo Destacado</span>
 </div>
 <h1 class="text-5xl md:text-7xl font-headline font-black tracking-tighter leading-[0.9] mb-4">
-                    TESLA MODEL S <br/><span class="text-primary italic">PLAID EDITION</span>
+                    LOS MEJORES <br/><span class="text-primary italic">SORTEOS AQUÍ</span>
 </h1>
 <div class="flex flex-wrap items-center gap-6 mt-8">
 <div class="flex gap-4">
