@@ -1,54 +1,31 @@
-<nav class="navbar navbar-expand-lg px-3 py-3">
-
-    <div class="container-fluid">
-
-        <!-- Logo -->
-        <a class="navbar-brand gold fw-bold" href="#">
-            <i class="fa-solid fa-gem me-1"></i> PremiosOxapampa
-        </a>
-
-        <!-- Botón hamburguesa -->
-        <button class="navbar-toggler border-gold" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-            <i class="fa-solid fa-bars gold"></i>
-        </button>
-
-        <!-- Contenido colapsable -->
-        <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarContent">
-
-            <!-- Menú centro -->
-            <ul class="navbar-nav mx-auto text-center gap-lg-2">
-
-                <li class="nav-item my-2 my-lg-0">
-                    <a href="#" class="nav-link-pro nav-inicio">
-                        <i class="fa-solid fa-house me-1"></i>
-                        Inicio
-                    </a>
-                </li>
-
-                <li class="nav-item my-2 my-lg-0">
-                    <a href="#" class="nav-link-pro nav-tickets">
-                        <i class="fa-solid fa-ticket me-1"></i>
-                        Mis Tickets
-                    </a>
-                </li>
-
-                <li class="nav-item my-2 my-lg-0">
-                    <a href="#" class="nav-link-pro nav-ganadores">
-                        <i class="fa-solid fa-trophy me-1"></i>
-                        Ganadores
-                    </a>
-                </li>
-
-            </ul>
-
-            <!-- Botón derecha -->
-            <div class="text-center mt-3 mt-lg-0">
-                <a href="#" class="btn btn-gold w-100 w-lg-auto">
-                    Iniciar Sesión
-                </a>
-            </div>
-
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#060e20]/95 backdrop-blur-xl rounded-t-3xl border-t border-[#192540]/50 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center px-4 pb-6 pt-2">
+    <a href="{{ route('home') }}">
+        <div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150">
+            <span class="material-symbols-outlined mb-1">home</span>
+            <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Inicio</span>
         </div>
+    </a>
 
-    </div>
+    <a href="{{ route('tickets') }}">
+        <div class="flex flex-col items-center justify-center text-[#90abff] bg-[#90abff]/10 rounded-2xl py-2 px-4 shadow-[0_0_15px_rgba(144,171,255,0.2)] active:scale-90 transition-transform duration-150">
+            <span class="material-symbols-outlined mb-1">confirmation_number</span>
+            <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Tickets</span>
+        </div>
+    </a>
+
+    <a href="{{ route('ganadores') }}">
+        <div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150">
+        <span class="material-symbols-outlined mb-1">emoji_events</span>
+        <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Ganadores</span>
+        </div>
+    </a>
+<div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Perfil</span>
+</div>
+</div>
 </nav>
+
+
+
