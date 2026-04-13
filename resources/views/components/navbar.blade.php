@@ -20,10 +20,6 @@
         <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Ganadores</span>
         </div>
     </a>
-<div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150">
-<span class="material-symbols-outlined mb-1">person</span>
-<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Perfil</span>
-</div>
 </div>
 </nav>
 

@@ -92,7 +92,7 @@
     </script>
 
     <?php
-        $version = '1993.4.2';
+        $version = '1993.4.4';
     ?>
 
     <!-- Google Fonts -->

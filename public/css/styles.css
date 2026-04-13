@@ -22,6 +22,8 @@ body {
     color: #FFD700;
 }
 
+
+
 .btn-gold {
     background: #FFD700;
     color: #000;
@@ -402,4 +404,30 @@ body {
 /* Divider */
 .footer-divider {
     border-color: rgba(255, 215, 0, 0.2);
+}
+
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgb(250, 131, 27) !important;
+}
+
+.border-primary {
+    --bs-border-opacity: 1;
+    border-color: rgb(250, 131, 27) !important;
+}
+
+.to-primary-dim {
+    --tw-gradient-to: rgb(250, 131, 27);
+}
+
+.from-primary {
+    --tw-gradient-from: rgb(250, 130, 20) !important;
+    --tw-gradient-to: rgb(250, 130, 20) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: rgb(250, 130, 20) !important;
 }
