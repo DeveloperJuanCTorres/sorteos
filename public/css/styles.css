@@ -431,3 +431,13 @@ body {
     --bs-bg-opacity: 1;
     background-color: rgb(250, 130, 20) !important;
 }
+
+.text-primary-container {
+    --tw-text-opacity: 1;
+    color: rgb(250, 130, 20) !important;
+}
+
+.text-\[\#90abff\] {
+    --tw-text-opacity: 1;
+    color: rgb(250, 130, 20) !important;
+}

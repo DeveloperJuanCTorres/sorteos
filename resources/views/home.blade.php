@@ -81,24 +81,7 @@
     Obtener Tickets
   </button>
 </section>
-<!-- Proof Banner -->
-<div class="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-secondary shadow-lg">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center">
-<span class="material-symbols-outlined text-secondary text-3xl" data-icon="stars" data-weight="fill">stars</span>
-</div>
-<div>
-<p class="text-secondary font-black font-headline text-xl uppercase italic tracking-tight">Victoria de Elite</p>
-<p class="text-on-surface-variant text-sm">Más de $1,000,000 entregados en premios reales.</p>
-</div>
-</div>
-<div class="flex -space-x-4">
-<img alt="Winner" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="portrait of a happy person with celebratory expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaaAg4_3fO3aWFnJwProMeUXZqWytAh8FQU4wumoLHqhhH0bHWFhC3iMBjk650ZJCZL9QaAKMrS2vGD-sPU7hz_n2kC6tFqDbZ4uPCWjJstKkf6soD1Otz8kCYVNYC-RtLR0usQZjGqMLu_KFMWXxhOfHI3djp9v12WABfcOmHJfdRWtSgxlA2gsrZWNRZxWITMRURBgLvLbjlfqB2GnSfjmuA9AbWJNr5qL-XCKBexl7oOPpOjkRvoSujGM8UDNm7Y_pgwlkstS0"/>
-<img alt="Winner" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="portrait of a smiling woman with colorful lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUyp-cA41nxitpq7nR8P-cl5qoduP9xLNGVS-5UMPSAKc5gouTFyX1K1KIJ5dVqCJ0mpfW1pKKaNzG41ku0Qr8N7Xcv1ns_eQmxJlgUxdrGW0pPz58ghZYTsL9rFaNTDYa7Evr8_mZ-vPqZOnWL-wdHY1PKid0E2EmVSnanvzpqEBtcmbdM7DPlAe5rsj_rkQtntchZImTtMaI4vvr8tBfuGYsZanPsi6qYtTR68lDGhFCbUOhlulReiUqtN9IXIPusdmTKmv8XYo"/>
-<img alt="Winner" class="w-10 h-10 rounded-full border-2 border-surface" data-alt="portrait of a happy man against tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZuUoCPMCG_1sN-edWbyGvKsHCmGofO70GCQXvebr4-u6QHeXxQS5KIy4ntpVYjWC10O_GSW80sL-jVDdA0_gnAbwnyKcTLRC4K27D_zPDR5zKB7Xk6PHLwcMuAHAxiEeg1ZiSq9pb1ejbo1uKfw6XMAU97JskAiU5zR_WBEe0EAW8Ew0URX4C8Y44uctXQWoKHl7Nf1jzE7CCsLUH4w9jn0ZMsAx68xvhvggO1Q6b6BI79Je9oJOxogwUyjoMiUj3CrGKu8pay_Q"/>
-<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-bright flex items-center justify-center text-[10px] font-bold text-primary">+5k</div>
-</div>
-</div>
+
 
 <!-- Popular Sweepstakes Grid -->
 <section>
