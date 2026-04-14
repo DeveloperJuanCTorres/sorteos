@@ -441,3 +441,7 @@ body {
     --tw-text-opacity: 1;
     color: rgb(250, 130, 20) !important;
 }
+
+.h-48 {
+    height: 20rem !important;
+}

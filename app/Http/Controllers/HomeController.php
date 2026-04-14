@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Award;
+use App\Models\Raffle;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sorteo = Raffle::where('active', 1)->first();
+        $premios = Award::where('raffle_id', $sorteo->id)->get();
+        return view('home', compact('sorteo', 'premios'));
     }
 
     public function tickets()
