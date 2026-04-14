@@ -445,3 +445,30 @@ body {
 .h-48 {
     height: 20rem !important;
 }
+
+
+
+
+
+
+
+
+
+.modal-content {
+    backdrop-filter: blur(20px);
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.form-control,
+.form-select {
+    background-color: rgba(255,255,255,0.05) !important;
+    border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}

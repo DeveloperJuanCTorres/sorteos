@@ -35,7 +35,9 @@
                         <span class="text-[10px] uppercase font-black text-on-surface-variant tracking-widest">Min</span>
                     </div>
                 </div>
-                <button class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed px-10 py-3 rounded-full font-headline font-black text-xl uppercase tracking-tighter shadow-[0_0_40px_rgba(144,171,255,0.4)] hover:shadow-[0_0_60px_rgba(144,171,255,0.6)] transition-all active:scale-95 duration-200">
+                <button data-bs-toggle="modal" 
+                        data-bs-target="#modalRegistro"
+                        class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed px-10 py-3 rounded-full font-headline font-black text-xl uppercase tracking-tighter shadow-[0_0_40px_rgba(144,171,255,0.4)] hover:shadow-[0_0_60px_rgba(144,171,255,0.6)] transition-all active:scale-95 duration-200">
                     Participar Ahora
                 </button>
             </div>
@@ -81,7 +83,9 @@
                 <span class="text-[10px] font-black uppercase tracking-widest mt-2 text-primary animate-pulse">Seg</span>
             </div>
         </div>
-        <button class="relative z-10 bg-primary hover:bg-primary-dim text-on-primary-fixed px-8 py-4 rounded-2xl font-headline font-black uppercase tracking-tighter transition-all active:scale-95 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+        <button data-bs-toggle="modal" 
+                data-bs-target="#modalRegistro"
+                class="relative z-10 bg-primary hover:bg-primary-dim text-on-primary-fixed px-8 py-4 rounded-2xl font-headline font-black uppercase tracking-tighter transition-all active:scale-95 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
             Obtener Tickets
         </button>
     </section>
@@ -153,7 +157,114 @@
             </div>
         </div>
     </section>
+
+
+   
 </main>
+ <!-- Modal -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
+
+                <!-- Header -->
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white fw-bold">
+                        Registro de Participante
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body text-white">
+
+                    <form id="formRegistro" enctype="multipart/form-data">
+
+                        <div class="row g-3">
+
+                            <!-- Tipo Documento -->
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de Documento</label>
+                                <select class="form-select bg-dark text-white border-0" name="tipo_documento" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="dni">DNI</option>
+                                    <option value="ce">Carnet de Extranjería</option>
+                                    <option value="pasaporte">Pasaporte</option>
+                                </select>
+                            </div>
+
+                            <!-- Número Documento -->
+                            <div class="col-md-6">
+                                <label class="form-label">Número de Documento</label>
+                                <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
+                            </div>
+
+                            <!-- Nombres -->
+                            <div class="col-md-6">
+                                <label class="form-label">Nombres</label>
+                                <input type="text" class="form-control bg-dark text-white border-0" name="nombres" required>
+                            </div>
+
+                            <!-- Apellidos -->
+                            <div class="col-md-6">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" class="form-control bg-dark text-white border-0" name="apellidos" required>
+                            </div>
+
+                            <!-- Correo -->
+                            <div class="col-md-6">
+                                <label class="form-label">Correo</label>
+                                <input type="email" class="form-control bg-dark text-white border-0" name="correo" required>
+                            </div>
+
+                            <!-- Teléfono -->
+                            <div class="col-md-6">
+                                <label class="form-label">Teléfono</label>
+                                <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
+                            </div>
+
+                        </div>
+
+                        <!-- SECCIÓN PAGO -->
+                        <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
+                            <h6 class="fw-bold mb-3">Pago por Yape</h6>
+
+                            <div class="row align-items-center">
+
+                                <!-- QR -->
+                                <div class="col-md-5 text-center">
+                                    <img src="{{ asset('img/yape-qr.jpeg') }}" 
+                                        alt="QR Yape" 
+                                        class="img-fluid rounded shadow"
+                                        style="max-width: 200px;">
+                                    <p class="mt-2 small">Escanea para pagar</p>
+                                </div>
+
+                                <!-- Upload -->
+                                <div class="col-md-7">
+                                    <label class="form-label">Adjuntar comprobante</label>
+                                    <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="mt-4 text-end">
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                Enviar Registro
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 <script>
     // Fecha del sorteo desde Laravel
