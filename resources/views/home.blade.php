@@ -161,110 +161,143 @@
 
    
 </main>
- <!-- Modal -->
-    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
 
-                <!-- Header -->
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-white fw-bold">
-                        Registro de Participante
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="modalRegistro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
 
-                <!-- Body -->
-                <div class="modal-body text-white">
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white fw-bold">
+                    Registro de Participante - {{$sorteo->name}}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
 
-                    <form id="formRegistro" enctype="multipart/form-data">
+            <!-- Body -->
+            <div class="modal-body text-white">
 
-                        <div class="row g-3">
+                <form id="formRegistro" enctype="multipart/form-data">
 
-                            <!-- Tipo Documento -->
-                            <div class="col-md-6">
-                                <label class="form-label">Tipo de Documento</label>
-                                <select class="form-select bg-dark text-white border-0" name="tipo_documento" required>
-                                    <option value="">Seleccionar</option>
-                                    <option value="dni">DNI</option>
-                                    <option value="ce">Carnet de Extranjería</option>
-                                    <option value="pasaporte">Pasaporte</option>
-                                </select>
+                    <div class="row g-3">
+
+                        <!-- Tipo Documento -->
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo de Documento</label>
+                            <select class="form-select bg-dark text-white border-0" name="tipo_documento" required>
+                                <option class="text-black" value="">Seleccionar</option>
+                                <option class="text-black" value="dni">DNI</option>
+                                <option class="text-black" value="ce">Carnet de Extranjería</option>
+                                <option class="text-black" value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+
+                        <!-- Número Documento -->
+                        <div class="col-md-6">
+                            <label class="form-label">Número de Documento</label>
+                            <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
+                        </div>
+
+                        <!-- Nombres -->
+                        <div class="col-md-6">
+                            <label class="form-label">Nombres</label>
+                            <input type="text" class="form-control bg-dark text-white border-0" name="nombres" required>
+                        </div>
+
+                        <!-- Apellidos -->
+                        <div class="col-md-6">
+                            <label class="form-label">Apellidos</label>
+                            <input type="text" class="form-control bg-dark text-white border-0" name="apellidos" required>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="col-md-6">
+                            <label class="form-label">Correo</label>
+                            <input type="email" class="form-control bg-dark text-white border-0" name="correo" required>
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Departamento</label>
+                            <select class="form-select bg-dark text-white border-0" name="departamento" required>
+                                <option class="text-black" value="">Seleccionar</option>
+                                <option class="text-black">Amazonas</option>
+                                <option class="text-black">Áncash</option>
+                                <option class="text-black">Apurímac</option>
+                                <option class="text-black">Arequipa</option>
+                                <option class="text-black">Ayacucho</option>
+                                <option class="text-black">Cajamarca</option>
+                                <option class="text-black">Callao</option>
+                                <option class="text-black">Cusco</option>
+                                <option class="text-black">Huancavelica</option>
+                                <option class="text-black">Huánuco</option>
+                                <option class="text-black">Ica</option>
+                                <option class="text-black">Junín</option>
+                                <option class="text-black">La Libertad</option>
+                                <option class="text-black">Lambayeque</option>
+                                <option class="text-black">Lima</option>
+                                <option class="text-black">Loreto</option>
+                                <option class="text-black">Madre de Dios</option>
+                                <option class="text-black">Moquegua</option>
+                                <option class="text-black">Pasco</option>
+                                <option class="text-black">Piura</option>
+                                <option class="text-black">Puno</option>
+                                <option class="text-black">San Martín</option>
+                                <option class="text-black">Tacna</option>
+                                <option class="text-black">Tumbes</option>
+                                <option class="text-black">Ucayali</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- SECCIÓN PAGO -->
+                    <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
+                        <h6 class="fw-bold mb-3">Pago por Yape</h6>
+
+                        <div class="row align-items-center">
+
+                            <!-- QR -->
+                            <div class="col-md-5 text-center">
+                                <img src="{{ asset('img/yape-qr1.jpeg') }}" 
+                                    alt="QR Yape" 
+                                    class="img-fluid rounded shadow"
+                                    style="max-width: 200px;">
+                                <p class="mt-2 small">Escanea para pagar</p>
                             </div>
 
-                            <!-- Número Documento -->
-                            <div class="col-md-6">
-                                <label class="form-label">Número de Documento</label>
-                                <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
-                            </div>
-
-                            <!-- Nombres -->
-                            <div class="col-md-6">
-                                <label class="form-label">Nombres</label>
-                                <input type="text" class="form-control bg-dark text-white border-0" name="nombres" required>
-                            </div>
-
-                            <!-- Apellidos -->
-                            <div class="col-md-6">
-                                <label class="form-label">Apellidos</label>
-                                <input type="text" class="form-control bg-dark text-white border-0" name="apellidos" required>
-                            </div>
-
-                            <!-- Correo -->
-                            <div class="col-md-6">
-                                <label class="form-label">Correo</label>
-                                <input type="email" class="form-control bg-dark text-white border-0" name="correo" required>
-                            </div>
-
-                            <!-- Teléfono -->
-                            <div class="col-md-6">
-                                <label class="form-label">Teléfono</label>
-                                <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
+                            <!-- Upload -->
+                            <div class="col-md-7">
+                                <label class="form-label">Adjuntar comprobante</label>
+                                <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required>
                             </div>
 
                         </div>
+                    </div>
 
-                        <!-- SECCIÓN PAGO -->
-                        <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
-                            <h6 class="fw-bold mb-3">Pago por Yape</h6>
+                    <!-- Footer -->
+                    <div class="mt-4 text-end">
+                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Enviar Registro
+                        </button>
+                    </div>
 
-                            <div class="row align-items-center">
-
-                                <!-- QR -->
-                                <div class="col-md-5 text-center">
-                                    <img src="{{ asset('img/yape-qr.jpeg') }}" 
-                                        alt="QR Yape" 
-                                        class="img-fluid rounded shadow"
-                                        style="max-width: 200px;">
-                                    <p class="mt-2 small">Escanea para pagar</p>
-                                </div>
-
-                                <!-- Upload -->
-                                <div class="col-md-7">
-                                    <label class="form-label">Adjuntar comprobante</label>
-                                    <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="mt-4 text-end">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
-                                Cancelar
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                Enviar Registro
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
+                </form>
 
             </div>
+
         </div>
     </div>
+</div>
 
 <script>
     // Fecha del sorteo desde Laravel
@@ -311,6 +344,33 @@
 
     // Ejecutar inmediatamente al cargar
     actualizarContador();
+</script>
+
+<script>
+    document.getElementById('formRegistro').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let formData = new FormData(this);
+
+        fetch("{{ route('tickets.store') }}", {
+            method: "POST",
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                document.getElementById('formRegistro').reset();
+
+                let modal = bootstrap.Modal.getInstance(document.getElementById('modalRegistro'));
+                modal.hide();
+            }
+        })
+        .catch(err => console.error(err));
+    });
 </script>
 
 @endsection

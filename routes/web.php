@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -15,11 +16,18 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'login' => false,
+]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tickets', [App\Http\Controllers\HomeController::class, 'tickets'])->name('tickets');
 Route::get('/ganadores', [App\Http\Controllers\HomeController::class, 'ganadores'])->name('ganadores');
+
+Route::get('/tickets/list', [TicketController::class, 'index'])->name('tickets.list');
+Route::get('/tickets/buscar', [TicketController::class, 'buscar'])->name('tickets.buscar');
+Route::post('/tickets/registrar', [TicketController::class, 'store'])->name('tickets.store');
 
 
 Route::get('/fix-config', function () {
