@@ -57,11 +57,11 @@
                 Todos
             </button>
 
-            <button onclick="filtrar('0', this)" class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
+            <button onclick="filtrar('1', this)" class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
                 Aprobados
             </button>
 
-            <button onclick="filtrar('1', this)" class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
+            <button onclick="filtrar('0', this)" class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
                 Sin aprobar
             </button>
             
