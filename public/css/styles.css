@@ -472,3 +472,95 @@ body {
 .form-select:focus {
     box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
 }
+
+
+.ticket-shape {
+    border-radius: 16px;
+
+    /* 🎟️ Forma de ticket real */
+    clip-path: polygon(
+        0% 0%, 
+        100% 0%, 
+        100% 35%, 
+        95% 40%, 
+        100% 45%, 
+        100% 55%, 
+        95% 60%, 
+        100% 65%, 
+        100% 100%, 
+        0% 100%, 
+        0% 65%, 
+        5% 60%, 
+        0% 55%, 
+        0% 45%, 
+        5% 40%, 
+        0% 35%
+    );
+}
+
+
+
+/* WhatsApp */
+
+/* Base */
+.btn-floating:hover img {
+  margin-bottom: -3px
+}
+
+.btn-floating {
+    position: fixed;
+    right: 25px;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    border: 0;
+    z-index: 9999;
+    color: white;
+    transition: .2s;
+}
+
+.btn-floating:hover {
+    width: auto;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.btn-floating span {
+    font-size: 16px;
+    margin-left: 5px;
+    transition: .2s;
+    line-height: 0px;
+    display: none;
+}
+
+.btn-floating:hover span {
+    display: inline-block;
+}
+
+/* Phone */
+.btn-floating.phone {
+    bottom: 165px;
+    background-color: #760f10;
+}
+
+.btn-floating.phone:hover {
+    background-color: #c03421;
+}
+
+/* WhatsApp */
+.btn-floating.whatsapp {
+    background-color: #34af23;
+    bottom: 105px;
+}
+
+.btn-floating.whatsapp:hover {
+    background-color: #1f7a12
+}
+
+/* Fin WhatsApp */
+
+
+/* .bg-secondary {
+    background-color: rgb(250, 130, 20) !important;
+} */

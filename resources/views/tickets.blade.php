@@ -68,46 +68,58 @@
         </div>
         
         <!-- Ticket Cards Grid -->
-         @foreach($tickets as $ticket)
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 ticket-item" data-estado="{{ $ticket->aprobado }}">
-            <!-- Ticket Card 1: Active -->
-            <div class="group bg-surface-container rounded-xl overflow-hidden shadow-2xl relative">
-                <div class="flex flex-col md:flex-row">
-                    <div class="md:w-48 h-48 md:h-auto overflow-hidden relative">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Luxury midnight blue sports car in a high-tech showroom with neon accents and dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUVPV55EGL4rl7pLalm4eyAEXrBlqABxmw6yFmpq9k1Ltm99klMrqh6AF2LDCn8mPU3KBY22zuR3sYkT4iJrlsKYMpa_XCw4ZjEju0X4SlVOkee5IpI3WhrdIJ46sGVD_sImGaxjb3CZxFmSK0rUNCggq96cEiD4YMwSMMWKNeT5XOxTmVoChd-gJ8st-xx8EiPxy_9ITD95_b8z3IFNUql6uy4htABbRiDpi-DfFYvGNRjX4tCIXUTSelX_9ZihpaUwZ7HKaGIS8" />
-                        <div class="absolute top-3 left-3 px-3 py-1 bg-tertiary/20 backdrop-blur-md rounded-full border border-tertiary/30">
-                            <span class="text-tertiary text-[10px] font-bold uppercase tracking-tighter">Active</span>
-                        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            @foreach($tickets as $ticket)
+            <div class="ticket-shape bg-surface-container-highest text-white p-6 shadow-2xl ticket-item"
+                data-estado="{{ $ticket->aprobado }}">
+
+                <!-- Header -->
+                <div class="flex justify-between items-center border-b border-dashed border-white/20 pb-4 mb-4">
+                    <div>
+                        <p class="text-[10px] uppercase text-white/50">SORTEO</p>
+                        <h3 class="text-lg font-bold leading-tight">
+                            {{$ticket->sorteo->name}}
+                        </h3>
                     </div>
-                    <div class="flex-1 p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="font-headline text-xl font-bold leading-tight">{{$ticket->sorteo->name}}</h3>
-                                <p class="text-on-surface-variant text-xs mt-1">Precio: S/. {{$ticket->sorteo->price}}</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="block text-[10px] uppercase text-on-surface-variant font-bold">Fecha</span>
-                                <span class="font-headline text-primary text-lg">{{$ticket->created_at}}</span>
-                            </div>
-                        </div>
-                        <div class="bg-surface-container-low p-4 rounded-lg mb-6">
-                            <span class="block text-[10px] uppercase text-on-surface-variant font-bold mb-2">Your Lucky Numbers</span>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center font-bold text-xs border border-primary/20">07</span>
-                                <span class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center font-bold text-xs border border-primary/20">14</span>
-                                <span class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center font-bold text-xs border border-primary/20">23</span>
-                                <span class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center font-bold text-xs border border-primary/20">42</span>
-                                <span class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center font-bold text-xs border border-primary text-primary">PB</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-gradient-to-r from-primary to-primary-dim py-3 rounded-full font-headline text-sm font-black uppercase tracking-widest text-on-primary active:scale-[0.96] transition-transform">
-                            View Ticket Details
-                        </button>
+
+                    <span class="text-[10px] px-2 py-1 rounded-full 
+                        {{ $ticket->aprobado ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400' }}">
+                        {{ $ticket->aprobado ? 'Aprobado' : 'Pendiente' }}
+                    </span>
+                </div>
+
+                <!-- Info -->
+                <div class="flex justify-between mb-6">
+                    <div>
+                        <p class="text-[10px] text-white/50">Precio</p>
+                        <p class="font-bold">S/. {{$ticket->sorteo->price}}</p>
+                    </div>
+
+                    <div class="text-right">
+                        <p class="text-[10px] text-white/50">Fecha</p>
+                        <p class="text-sm">{{$ticket->created_at}}</p>
                     </div>
                 </div>
+
+                <!-- Footer -->
+                <div class="border-t border-dashed border-white/20 pt-4 flex justify-between items-center">
+                    <span class="text-xs font-mono tracking-widest">
+                        #{{$ticket->id}}
+                    </span>
+
+                    <!-- Código de barras -->
+                    <div class="flex gap-[2px]">
+                        @for($i=0;$i<18;$i++)
+                            <div class="w-[2px] h-6 bg-white"></div>
+                        @endfor
+                    </div>
+                </div>
+
             </div>
+            @endforeach
+
         </div>
-        @endforeach
     @else
         <p class="text-center text-gray-400">Ingresa tu DNI para ver tus tickets</p>
     @endif
@@ -121,9 +133,9 @@
         // 🔹 FILTRO
         items.forEach(item => {
             if (tipo === 'todos') {
-                item.style.display = 'flex';
+                item.style.display = 'block';
             } else {
-                item.style.display = item.dataset.estado === tipo ? 'flex' : 'none';
+                item.style.display = item.dataset.estado === tipo ? 'block' : 'none';
             }
         });
 

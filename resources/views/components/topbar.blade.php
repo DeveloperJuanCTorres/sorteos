@@ -9,7 +9,7 @@
             </a>
         </div>
         <!-- <h1 class="font-headline font-black tracking-tighter uppercase text-2xl italic text-[#90abff]">NEON ARENA</h1> -->
-         <img src="img/oxapremios.png" width="180" alt="">
+         <img src="{{asset('img/oxapremios.png')}}" width="180" alt="Oxapremios">
          
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-[#90abff] hover:bg-[#192540] hover:scale-105 transition-all active:scale-95 duration-200 cursor-pointer">

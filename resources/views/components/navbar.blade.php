@@ -27,4 +27,18 @@
 </nav>
 
 
+<a href="tel:989876161">
+  <button class="btn-floating phone">
+    <i class="fa-solid fa-phone text-yellow-400 text-2xl"></i>
+    <span>989876161</span>
+  </button>
+</a>
+
+<a href="https://api.whatsapp.com/send?phone=51989876161" target="_blank">
+  <button class="btn-floating whatsapp">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <span>(51) 989876161</span>
+  </button>
+</a>
+
 
