@@ -168,10 +168,31 @@
         <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
 
             <!-- Header -->
-            <div class="modal-header border-0">
-                <h5 class="modal-title text-white fw-bold">
-                    Registro de Participante - {{$sorteo->name}}
-                </h5>
+            <div class="modal-header border-0 d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-3">
+
+                    <label class="form-label text-white mb-0">
+                        Sorteo:
+                    </label>
+
+                    <select name="raffle_id" 
+                        class="form-select bg-dark text-white border-0"
+                        style="width: auto; min-width: 220px;" required>
+
+                        @foreach($sorteos as $item)
+                            <option value="{{ $item->id }}" 
+                                {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
+                                
+                                {{ $item->name }} - 
+                                {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
+
+                            </option>
+                        @endforeach
+
+                    </select>
+
+                </div>
+                
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
 
@@ -370,6 +391,162 @@
             }
         })
         .catch(err => console.error(err));
+    });
+</script>
+
+<script>
+    document.getElementById('formRegistro').addEventListener('submit', function(e){
+
+        const tipo = document.querySelector('[name="tipo_documento"]').value;
+        const numero = document.querySelector('[name="numero_documento"]').value.trim();
+        const nombres = document.querySelector('[name="nombres"]').value.trim();
+        const apellidos = document.querySelector('[name="apellidos"]').value.trim();
+        const telefono = document.querySelector('[name="telefono"]').value.trim();
+        const correo = document.querySelector('[name="correo"]').value.trim();
+        const file = document.querySelector('[name="comprobante"]').files[0];
+
+        // 🚫 Regex seguros (solo letras y números básicos)
+        const regexTexto = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+        const regexNumero = /^[0-9]+$/;
+        const regexTelefono = /^[0-9]{9}$/;
+
+        // ❌ Validaciones
+        if(!regexTexto.test(nombres)){
+            alert('Nombres inválidos');
+            e.preventDefault(); return;
+        }
+
+        if(!regexTexto.test(apellidos)){
+            alert('Apellidos inválidos');
+            e.preventDefault(); return;
+        }
+
+        if(tipo === 'dni'){
+            if(!regexNumero.test(numero) || numero.length !== 8){
+                alert('El DNI debe tener 8 dígitos numéricos');
+                e.preventDefault(); return;
+            }
+        }
+
+        if(tipo === 'ce'){
+            if(numero.length < 9){
+                alert('Carnet de extranjería inválido');
+                e.preventDefault(); return;
+            }
+        }
+
+        if(tipo === 'pasaporte'){
+            if(numero.length < 6){
+                alert('Pasaporte inválido');
+                e.preventDefault(); return;
+            }
+        }
+
+        if(!regexTelefono.test(telefono)){
+            alert('Teléfono debe tener 9 dígitos');
+            e.preventDefault(); return;
+        }
+
+        // 📎 Validar archivo
+        if(file){
+            const allowedTypes = ['image/jpeg','image/png','image/jpg'];
+            if(!allowedTypes.includes(file.type)){
+                alert('Solo se permiten imágenes JPG o PNG');
+                e.preventDefault(); return;
+            }
+
+            if(file.size > 2 * 1024 * 1024){
+                alert('La imagen no debe superar los 2MB');
+                e.preventDefault(); return;
+            }
+        }
+
+    });
+</script>
+
+<script>
+    // Solo números en documento
+    document.querySelector('[name="numero_documento"]').addEventListener('input', function(){
+        this.value = this.value.replace(/[^0-9a-zA-Z]/g, '');
+    });
+
+    // Solo letras en nombres
+    document.querySelector('[name="nombres"]').addEventListener('input', function(){
+        this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    });
+
+    document.querySelector('[name="apellidos"]').addEventListener('input', function(){
+        this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    });
+
+    // Solo números en teléfono
+    document.querySelector('[name="telefono"]').addEventListener('input', function(){
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>
+
+<script>
+    const tipoDoc = document.querySelector('[name="tipo_documento"]');
+    const numDoc = document.querySelector('[name="numero_documento"]');
+
+    // 🔁 Cuando cambia el tipo de documento
+    tipoDoc.addEventListener('change', function() {
+
+        numDoc.value = ''; // limpiar
+
+        if(this.value === 'dni'){
+            numDoc.setAttribute('maxlength', '8');
+            numDoc.setAttribute('inputmode', 'numeric');
+        } else if(this.value === 'ce'){
+            numDoc.setAttribute('maxlength', '12');
+            numDoc.removeAttribute('inputmode');
+        } else if(this.value === 'pasaporte'){
+            numDoc.setAttribute('maxlength', '12');
+            numDoc.removeAttribute('inputmode');
+        } else {
+            numDoc.removeAttribute('maxlength');
+        }
+
+    });
+
+    // ⛔ Validación en tiempo real mientras escribe
+    numDoc.addEventListener('input', function(){
+
+        const tipo = tipoDoc.value;
+
+        if(tipo === 'dni'){
+            // solo números
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+
+        if(tipo === 'ce' || tipo === 'pasaporte'){
+            // letras y números (sin símbolos raros)
+            this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');
+        }
+
+    });
+</script>
+
+<script>
+    const modal = document.getElementById('modalRegistro');
+    const form = document.getElementById('formRegistro');
+
+    modal.addEventListener('hidden.bs.modal', function () {
+
+        // 🔄 Resetear formulario
+        form.reset();
+
+        // 🧹 Limpiar inputs manuales (por si acaso)
+        form.querySelectorAll('input, select').forEach(el => {
+            el.value = '';
+        });
+
+        // 🧼 Limpiar archivo (importante)
+        const fileInput = form.querySelector('[name="comprobante"]');
+        if(fileInput){
+            fileInput.value = '';
+        }
+
     });
 </script>
 

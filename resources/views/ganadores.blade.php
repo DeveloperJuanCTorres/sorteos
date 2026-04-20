@@ -17,11 +17,34 @@
         </div>
     </section>
 
+    <div class="flex flex-col md:flex-row gap-4 mb-8">
+        <!-- FILTRO POR SORTEO -->
+        <select id="filtroSorteo" class="px-4 py-2 rounded-xl bg-surface-container-high text-white">
+            <option value="todos">Todos los sorteos</option>
+            @foreach($sorteos as $s)
+                <option value="{{ $s->id }}">{{ $s->name }}</option>
+            @endforeach
+        </select>
+
+        <!-- FILTRO POR PREMIO -->
+        <input 
+            type="text" 
+            id="filtroPremio"
+            placeholder="Buscar premio..."
+            class="px-4 py-2 rounded-xl bg-surface-container-high text-white w-full md:w-64"
+        >
+
+    </div>
+
     <!-- Winners Bento Feed -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6" style="padding-bottom: 120px;">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6" style="padding-bottom: 120px;">       
 
         <!-- Regular Winner Grid Item 1 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
+         @foreach($awards as $award)
+        <div class="ticket-item md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group"
+            data-sorteo="{{ $award->raffle_id }}"
+            data-premio="{{ strtolower($award->name) }}">
+
             <div class="h-48 overflow-hidden relative">
                 <img alt="iPhone Prize" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="macro close-up of a high-end smartphone camera lens with purple and blue light reflections on a dark glossy surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcRHibluPy8lW5PCQKPxp0WD85WJdbHtiAlwFRWeav97WahKTOcIu743xvHcaQiWu4M3nJt73xmtUX9mpKhYRX8ewcedCw6XkOgoLnU5zDnQXFvqhp84NwJz1G3AOnqFtsh8s0muzWI7BDtxdZ_THEA-AEWORW55hf3ihbEqprMojl-ivQnJ2m4vKApSF7A2C_C8_f8oQOiRGO2WrTefEawfyJfmi3Omqac0Gxj5tgbi4f9jSKScy8jgd7nsDp8p2kfVEsebzgles" />
                 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
@@ -38,101 +61,8 @@
                 </button>
             </div>
         </div>
-
-        <!-- Regular Winner Grid Item 2 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
-            <div class="h-48 overflow-hidden relative">
-                <img alt="Gaming Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="gamer setup with mechanical keyboard and mouse glowing in vibrant neon cyan and magenta lights in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByjoL0nUQ5DgTRdjr68tiUxxAkyRQpUs3QOFym1HJjKnsmJhrnDcq8RT1PKF7UCduJnPKxL3gH9FS_8zRXaGVdtkJ7f7mKd-O30J9o5-pHj3dpUxzuolrOmMlCc7n5VY4jpL2pxDwhWn5LY9udJl-tjTYzGcP8zHfGdQX8X0P30ZU7NSq9jhbBDRAWYnkyowFVqp0R4IRbmGhKBUfubwMna825tGxEFsTBtehRcmLB_wlFdml5UQagskPAx0VnjKkHAlHt9lQhOeg" />
-                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">Alex R***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">5h ago</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"The dream battle station is finally complete. Neon Arena is legit, my prize arrived in 2 days."</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
-            </div>
-        </div>
-
-        <!-- Regular Winner Grid Item 3 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
-            <div class="h-48 overflow-hidden relative">
-                <img alt="PlayStation 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="sleek white gaming console standing vertically with blue LED accents against a dark moody architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8FzQZpKTpeQPzRAd7xBLZgnCV7rdwcP1X18sJ4ETb706xH2TzbH-Q4YaicAIQlU0EdMtkZOCEI0wY90Wuj3rWSzZpTLgsiMxALDuCKQSl0nf3N4w6CXPTn_1OPf4aasRUciunApeAuSuP20SIZBaeUWqB3cr6OYbJkJASS6hIaoKPMOpJTaH91TDbyhr443p9MdqNbi3FR151vNqI6GiSNz3eeXtccvNugyWOuoNSZVC7azCHb1fCq1tMiiDnhbEEuyr0Z3yOe7Q" />
-                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">David L***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">Yesterday</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"I've entered so many times and finally it happened! PS5 bundle secured."</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
-            </div>
-        </div>
-
-        <!-- Regular Winner Grid Item 1 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
-            <div class="h-48 overflow-hidden relative">
-                <img alt="iPhone Prize" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="macro close-up of a high-end smartphone camera lens with purple and blue light reflections on a dark glossy surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcRHibluPy8lW5PCQKPxp0WD85WJdbHtiAlwFRWeav97WahKTOcIu743xvHcaQiWu4M3nJt73xmtUX9mpKhYRX8ewcedCw6XkOgoLnU5zDnQXFvqhp84NwJz1G3AOnqFtsh8s0muzWI7BDtxdZ_THEA-AEWORW55hf3ihbEqprMojl-ivQnJ2m4vKApSF7A2C_C8_f8oQOiRGO2WrTefEawfyJfmi3Omqac0Gxj5tgbi4f9jSKScy8jgd7nsDp8p2kfVEsebzgles" />
-                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">Sarah J***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">2h ago</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"Upgraded to the latest iPhone thanks to a single ticket! Unbelievable luck!"</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
-            </div>
-        </div>
-
-        <!-- Regular Winner Grid Item 2 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
-            <div class="h-48 overflow-hidden relative">
-                <img alt="Gaming Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="gamer setup with mechanical keyboard and mouse glowing in vibrant neon cyan and magenta lights in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByjoL0nUQ5DgTRdjr68tiUxxAkyRQpUs3QOFym1HJjKnsmJhrnDcq8RT1PKF7UCduJnPKxL3gH9FS_8zRXaGVdtkJ7f7mKd-O30J9o5-pHj3dpUxzuolrOmMlCc7n5VY4jpL2pxDwhWn5LY9udJl-tjTYzGcP8zHfGdQX8X0P30ZU7NSq9jhbBDRAWYnkyowFVqp0R4IRbmGhKBUfubwMna825tGxEFsTBtehRcmLB_wlFdml5UQagskPAx0VnjKkHAlHt9lQhOeg" />
-                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">Alex R***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">5h ago</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"The dream battle station is finally complete. Neon Arena is legit, my prize arrived in 2 days."</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
-            </div>
-        </div>
-
-        <!-- Regular Winner Grid Item 3 -->
-        <div class="md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group">
-            <div class="h-48 overflow-hidden relative">
-                <img alt="PlayStation 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="sleek white gaming console standing vertically with blue LED accents against a dark moody architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8FzQZpKTpeQPzRAd7xBLZgnCV7rdwcP1X18sJ4ETb706xH2TzbH-Q4YaicAIQlU0EdMtkZOCEI0wY90Wuj3rWSzZpTLgsiMxALDuCKQSl0nf3N4w6CXPTn_1OPf4aasRUciunApeAuSuP20SIZBaeUWqB3cr6OYbJkJASS6hIaoKPMOpJTaH91TDbyhr443p9MdqNbi3FR151vNqI6GiSNz3eeXtccvNugyWOuoNSZVC7azCHb1fCq1tMiiDnhbEEuyr0Z3yOe7Q" />
-                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">David L***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">Yesterday</span>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"I've entered so many times and finally it happened! PS5 bundle secured."</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
-            </div>
-        </div>
+        @endforeach
+        
     </div>
 
 
@@ -148,5 +78,38 @@
         </div>
     </section> -->
 </main>
+
+
+
+<script>
+const filtroSorteo = document.getElementById('filtroSorteo');
+const filtroPremio = document.getElementById('filtroPremio');
+
+function aplicarFiltros(){
+    const sorteo = filtroSorteo.value;
+    const premio = filtroPremio.value.toLowerCase();
+
+    document.querySelectorAll('.ticket-item').forEach(item => {
+
+        const itemSorteo = item.dataset.sorteo;
+        const itemPremio = item.dataset.premio;
+
+        let visible = true;
+
+        if(sorteo !== 'todos' && itemSorteo !== sorteo){
+            visible = false;
+        }
+
+        if(premio && !itemPremio.includes(premio)){
+            visible = false;
+        }
+
+        item.style.display = visible ? 'block' : 'none';
+    });
+}
+
+filtroSorteo.addEventListener('change', aplicarFiltros);
+filtroPremio.addEventListener('input', aplicarFiltros);
+</script>
 
 @endsection

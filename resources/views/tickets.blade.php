@@ -125,6 +125,8 @@
     @endif
 </main>
 
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function filtrar(tipo, btn) {
         const items = document.querySelectorAll('.ticket-item');
@@ -150,5 +152,44 @@
         btn.classList.add('bg-primary', 'text-on-primary-container');
     }
 </script>
+
+@if(isset($sinResultados) && $sinResultados && isset($busqueda))
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Sin resultados',
+            html: `
+                <p style="font-size:14px; color:#cbd5e1;">
+                    No se encontraron tickets para el DNI ingresado.
+                </p>
+            `,
+            confirmButtonText: 'Intentar nuevamente',
+            background: '#091328',
+            color: '#fff',
+            confirmButtonColor: '#90abff',
+            backdrop: 'rgba(0,0,0,0.8)',
+            customClass: {
+                popup: 'rounded-3xl shadow-2xl'
+            },
+            didOpen: () => {
+                // 🔥 limpiar URL sin recargar
+                window.history.replaceState({}, document.title, "{{ route('tickets') }}");
+            },
+            didClose: () => {
+                const input = document.querySelector('input[name="dni"]');
+                if(input){
+                    input.focus();
+                    input.value = '';
+                }
+            }
+        });
+
+        
+
+    });
+</script>
+@endif
 
 @endsection
