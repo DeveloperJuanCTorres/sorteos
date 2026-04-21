@@ -23,15 +23,15 @@
             <div class="flex flex-wrap items-center gap-6 mt-8">
                 <div class="flex gap-4">
                     <div class="bg-surface-container-highest/80 backdrop-blur-md p-4 rounded-xl border-b-2 border-primary">
-                        <span id="dias1" class="block text-2xl font-black font-headline tracking-tighter">04</span>
+                        <span id="dias1" class="block text-2xl font-black font-headline tracking-tighter">00</span>
                         <span class="text-[10px] uppercase font-black text-on-surface-variant tracking-widest">Días</span>
                     </div>
                     <div class="bg-surface-container-highest/80 backdrop-blur-md p-4 rounded-xl border-b-2 border-primary">
-                        <span id="horas1" class="block text-2xl font-black font-headline tracking-tighter">18</span>
+                        <span id="horas1" class="block text-2xl font-black font-headline tracking-tighter">00</span>
                         <span class="text-[10px] uppercase font-black text-on-surface-variant tracking-widest">Hrs</span>
                     </div>
                     <div class="bg-surface-container-highest/80 backdrop-blur-md p-4 rounded-xl border-b-2 border-primary">
-                        <span id="minutos1" class="block text-2xl font-black font-headline tracking-tighter">42</span>
+                        <span id="minutos1" class="block text-2xl font-black font-headline tracking-tighter">00</span>
                         <span class="text-[10px] uppercase font-black text-on-surface-variant tracking-widest">Min</span>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
     <section>
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Próximo <span class="text-primary-container">Sorteo</span></h2>
+                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios  <span class="text-primary-container">{{$sorteo->name}}</span></h2>
                 <p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-black">Tu próxima victoria está a un ticket de distancia</p>
             </div>
             <button class="text-primary font-black uppercase text-sm tracking-widest hover:underline transition-all">Ver todos</button>
@@ -320,11 +320,33 @@
     </div>
 </div>
 
+
+
 <script>
     // Fecha del sorteo desde Laravel
-    const fechaSorteo = new Date("{{ \Carbon\Carbon::parse($sorteo->date)->format('Y-m-d H:i:s') }}").getTime();
+    
+
+    let fechaSorteo = {!! ($sorteo && $sorteo->date) 
+        ? '"' . \Carbon\Carbon::parse($sorteo->date)->format('Y-m-d H:i:s') . '"' 
+        : 'null' !!};
+
+    fechaSorteo = fechaSorteo ? new Date(fechaSorteo).getTime() : null;
+    
 
     function actualizarContador() {
+
+        if (!fechaSorteo) {
+            document.getElementById("dias1").innerText = "--";
+            document.getElementById("horas1").innerText = "--";
+            document.getElementById("minutos1").innerText = "--";
+
+            document.getElementById("dias").innerText = "--";
+            document.getElementById("horas").innerText = "--";
+            document.getElementById("minutos").innerText = "--";
+            document.getElementById("segundos").innerText = "--";
+            return;
+        }
+
         const ahora = new Date().getTime();
         const diferencia = fechaSorteo - ahora;
 
