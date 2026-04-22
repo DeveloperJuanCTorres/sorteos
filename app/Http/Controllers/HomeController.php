@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Award;
 use App\Models\Company;
 use App\Models\Raffle;
+use App\Models\Winner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -58,7 +59,9 @@ class HomeController extends Controller
         $sorteos = Raffle::where('active', 1)
             ->orderBy('date', 'asc')
             ->get();
-        $awards = Award::whereIn('raffle_id', $sorteos->pluck('id'))->get();
-        return view('ganadores', compact('empresa', 'sorteos', 'awards'));
+
+        $winners = Winner::with(['raffle', 'award', 'tickets'])->latest()->get();
+        
+        return view('ganadores', compact('empresa', 'sorteos', 'winners'));
     }
 }

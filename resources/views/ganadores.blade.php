@@ -4,22 +4,25 @@
 
 
 <main class="pt-24 px-6 max-w-screen-xl mx-auto">
-    <!-- Hero Section -->
-    <section class="relative mb-12 rounded-3xl overflow-hidden bg-surface-container-high aspect-[21/9] flex items-center">
-        <div class="absolute inset-0 z-0">
-            <img alt="Winning Experience" class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="dramatic wide shot of a luxury sports car on a dark stage with intense neon blue floor lighting and atmospheric smoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHVQcVVX224rSt3w8j1XMIWeVcSmRBvNT80_7Ndsg_j8mGiHBv3GwiwGKBB9H0qXO5w2aa8i0d-cW1fI6zpnTK4MNGktg8055tI-YRBx34weQ-Aul7GFdF9wHZEeAoDnBihm9dChVxr_AKwifruhB4m9THwWS_V5_9FzIiyFLx5yQc7XSu-oHAKKRKHG9gXiJo2uDdiSbmDPrEY4WaTgpTtW6xk9cablPEAyyxoVdehF45Tj5O-SPQJDudRXqZBM3vSC9lx-wd88E" />
-            <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
+    <header class="mb-10 text-center">    
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+            <h2 class="font-headline text-5xl font-black tracking-tight uppercase">
+                Nuestros
+            </h2>
+            <h2 class="font-headline text-5xl font-black tracking-tight uppercase text-primary italic">
+                Ganadores
+            </h2>
         </div>
-        <div class="relative z-10 px-12 max-w-2xl">
-            <span class="text-tertiary font-headline font-black uppercase tracking-[0.3em] text-sm mb-4 block">Recent Hall of Fame</span>
-            <h2 class="text-5xl md:text-7xl font-headline font-black italic tracking-tighter mb-4 text-on-surface leading-tight">THEY DREAMT.<br /><span class="text-secondary">THEY WON.</span></h2>
-            <p class="text-on-surface-variant text-lg max-w-md font-medium leading-relaxed">Join the circle of champions. Total transparency, real winners, life-changing prizes delivered daily.</p>
-        </div>
-    </section>
+        
+        <p class="text-on-surface-variant text-lg mt-2">
+            Consulta aquí los ganadores de nuestros sorteos.
+        </p>        
 
-    <div class="flex flex-col md:flex-row gap-4 mb-8">
+    </header>
+
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
         <!-- FILTRO POR SORTEO -->
-        <select id="filtroSorteo" class="px-4 py-2 rounded-xl bg-surface-container-high text-white">
+        <select id="filtroSorteo" class="px-4 py-2 rounded-xl bg-surface-container-high text-white md:w-64">
             <option value="todos">Todos los sorteos</option>
             @foreach($sorteos as $s)
                 <option value="{{ $s->id }}">{{ $s->name }}</option>
@@ -39,31 +42,71 @@
     <!-- Winners Bento Feed -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6" style="padding-bottom: 120px;">       
 
-        <!-- Regular Winner Grid Item 1 -->
-         @foreach($awards as $award)
+        @forelse($winners as $winner)
         <div class="ticket-item md:col-span-4 bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col border border-outline-variant/10 shadow-xl group"
-            data-sorteo="{{ $award->raffle_id }}"
-            data-premio="{{ strtolower($award->name) }}">
+            data-sorteo="{{ $winner->raffle_id }}"
+            data-premio="{{ strtolower($winner->award->name ?? '') }}">
 
+            <!-- Imagen -->
             <div class="h-48 overflow-hidden relative">
-                <img alt="iPhone Prize" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="macro close-up of a high-end smartphone camera lens with purple and blue light reflections on a dark glossy surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcRHibluPy8lW5PCQKPxp0WD85WJdbHtiAlwFRWeav97WahKTOcIu743xvHcaQiWu4M3nJt73xmtUX9mpKhYRX8ewcedCw6XkOgoLnU5zDnQXFvqhp84NwJz1G3AOnqFtsh8s0muzWI7BDtxdZ_THEA-AEWORW55hf3ihbEqprMojl-ivQnJ2m4vKApSF7A2C_C8_f8oQOiRGO2WrTefEawfyJfmi3Omqac0Gxj5tgbi4f9jSKScy8jgd7nsDp8p2kfVEsebzgles" />
+                <img 
+                    src="{{ $winner->image ? asset('storage/'.$winner->image) : 'https://via.placeholder.com/400x300' }}" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
                 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
             </div>
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h5 class="font-headline font-bold text-on-surface">Sarah J***</h5>
-                    <span class="text-outline text-[10px] font-bold uppercase">2h ago</span>
+
+            <!-- Info -->
+            <div class="p-6 flex flex-col justify-between flex-1">
+
+                <!-- Nombre + fecha -->
+                <div class="flex justify-between items-center mb-3">
+                    <h5 class="font-headline font-bold text-on-surface">
+                        {{ $winner->name }}
+                    </h5>
+                    <span class="text-outline text-[10px] font-bold uppercase">
+                        {{ $winner->created_at->diffForHumans() }}
+                    </span>
                 </div>
-                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">"Upgraded to the latest iPhone thanks to a single ticket! Unbelievable luck!"</p>
-                <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">link</span>
-                    Verify Transaction
-                </button>
+
+                <!-- Premio -->
+                <p class="text-on-surface-variant text-sm mb-2">
+                    🎁 {{ $winner->award->name ?? 'Premio no disponible' }}
+                </p>
+
+                <!-- Sorteo -->
+                <p class="text-xs text-outline mb-4">
+                    🎟 Sorteo: {{ $winner->raffle->name ?? '-' }}
+                </p>
+
+                <!-- Tickets -->
+                <div class="mb-4">
+                    <span class="text-xs text-outline block mb-1">Tickets ganadores:</span>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach($winner->tickets as $ticket)
+                            <span class="px-2 py-1 text-xs bg-primary/20 text-primary rounded-lg">
+                                {{ $ticket->nombres }} - {{ $ticket->dni }}
+                            </span>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Botón -->
+                <!-- <button class="w-full py-3 bg-surface-bright text-on-surface font-bold text-xs uppercase tracking-widest rounded-xl border border-outline-variant/30 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">verified</span>
+                    Verificado
+                </button> -->
+
             </div>
         </div>
-        @endforeach
-        
-    </div>
+
+        @empty
+        <div class="col-span-12 text-center text-on-surface-variant">
+            No hay ganadores registrados aún
+        </div>
+        @endforelse
+
+        </div>
 
 
     <!-- Transparency Banner -->
@@ -82,34 +125,35 @@
 
 
 <script>
-const filtroSorteo = document.getElementById('filtroSorteo');
-const filtroPremio = document.getElementById('filtroPremio');
+    const filtroSorteo = document.getElementById('filtroSorteo');
+    const filtroPremio = document.getElementById('filtroPremio');
 
-function aplicarFiltros(){
-    const sorteo = filtroSorteo.value;
-    const premio = filtroPremio.value.toLowerCase();
+    function aplicarFiltros(){
 
-    document.querySelectorAll('.ticket-item').forEach(item => {
+        const sorteo = filtroSorteo.value;
+        const premio = filtroPremio.value.toLowerCase();
 
-        const itemSorteo = item.dataset.sorteo;
-        const itemPremio = item.dataset.premio;
+        document.querySelectorAll('.ticket-item').forEach(item => {
 
-        let visible = true;
+            const itemSorteo = item.dataset.sorteo;
+            const itemPremio = item.dataset.premio || '';
 
-        if(sorteo !== 'todos' && itemSorteo !== sorteo){
-            visible = false;
-        }
+            let visible = true;
 
-        if(premio && !itemPremio.includes(premio)){
-            visible = false;
-        }
+            if(sorteo !== 'todos' && itemSorteo !== sorteo){
+                visible = false;
+            }
 
-        item.style.display = visible ? 'block' : 'none';
-    });
-}
+            if(premio && !itemPremio.includes(premio)){
+                visible = false;
+            }
 
-filtroSorteo.addEventListener('change', aplicarFiltros);
-filtroPremio.addEventListener('input', aplicarFiltros);
+            item.style.display = visible ? '' : 'none';
+        });
+    }
+
+    filtroSorteo.addEventListener('change', aplicarFiltros);
+    filtroPremio.addEventListener('input', aplicarFiltros);
 </script>
 
 @endsection

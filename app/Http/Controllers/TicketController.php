@@ -6,6 +6,8 @@ use App\Models\Company;
 use App\Models\Raffle;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\TicketsExport;
 
 class TicketController extends Controller
 {
@@ -99,5 +101,26 @@ class TicketController extends Controller
             'success' => true,
             'message' => 'Registro enviado correctamente'
         ]);
+    }
+
+    public function exportView()
+    {
+        $empresa = Company::first();
+        $sorteos = Raffle::orderBy('date', 'desc')->get();
+        return view('tickets.export', compact('sorteos', 'empresa'));
+    }
+
+    public function exportPrint(Request $request)
+    {
+        $tickets = Ticket::where('sorteo_id', $request->raffle_id)
+            ->where('aprobado', 1)
+            ->get();
+
+        return view('tickets.print', compact('tickets'));
+    }
+
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(new TicketsExport($request->raffle_id), 'tickets.xlsx');
     }
 }
