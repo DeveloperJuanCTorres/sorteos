@@ -93,10 +93,6 @@
 
                 <div class="space-y-3 text-sm pt-4">
 
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-phone text-[#90abff]"></i>
-                        <span>+51 {{ $empresa->telefono }}</span>
-                    </div>
 
                     <div class="flex items-center gap-3">
                         <i class="fab fa-whatsapp text-green-500"></i>

@@ -44,7 +44,9 @@ class HomeController extends Controller
             ? Award::where('raffle_id', $sorteo->id)->get()
             : collect();
 
-        return view('home', compact('sorteos', 'sorteo', 'premios', 'empresa'));
+        $winners = Winner::with(['raffle', 'award', 'tickets'])->latest()->get();
+
+        return view('home', compact('sorteos', 'sorteo', 'premios', 'empresa', 'winners'));
     }
 
     public function tickets()

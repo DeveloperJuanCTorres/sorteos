@@ -118,7 +118,7 @@
                         <h3 class="font-headline font-black text-xl uppercase tracking-tighter leading-tight">{{$premio->name}}</h3>
                         <!-- <span class="text-secondary font-black text-lg font-headline tracking-tighter">{{$premio->cantidad}} Und</span> -->
                     </div>
-                    <div class="space-y-2">
+                    <!-- <div class="space-y-2">
                         <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
                             <span>Progreso</span>
                             <span class="text-primary">85%</span>
@@ -126,7 +126,7 @@
                         <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
                             <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(144,171,255,0.5)]" style="width: 85%"></div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <button class="w-full py-3 bg-surface-bright text-on-surface font-black uppercase text-xs tracking-widest rounded-full hover:bg-primary hover:text-on-primary-fixed transition-all">Participar</button> -->
                 </div>
             </div>
@@ -136,9 +136,27 @@
         </div>
     </section>
 
+    @if($winners)
+    <div class="swiper myGallery px-4">
+        <h2 class="text-3xl font-headline font-black uppercase tracking-tighter text-center mb-16">Nuestros <span class="text-primary italic">Ganadores</span></h2>
+        <div class="swiper-wrapper">
+
+            @foreach($winners as $winner)
+            <div class="swiper-slide">
+                <div class="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <img src="{{ asset('storage/' . $winner->image) }}" 
+                        class="w-full h-[180px] object-cover">
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+    @endif
+
     <!-- "Cómo Funciona" Step Grid -->
     <section class="bg-surface-container-low rounded-[2.5rem] p-12">
-        <h2 class="text-3xl font-headline font-black uppercase tracking-tighter text-center mb-16">Domina la <span class="text-primary italic">Arena</span></h2>
+        <h2 class="text-3xl font-headline font-black uppercase tracking-tighter text-center mb-16">Pon a prueba <span class="text-primary italic">tu Suerte</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
             <!-- Connectors for Desktop -->
             <div class="hidden md:block absolute top-20 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
@@ -154,7 +172,7 @@
             </div>
             <div class="flex flex-col items-center text-center relative z-10">
                 <div class="w-16 h-16 bg-surface-bright rounded-2xl flex items-center justify-center font-headline font-black text-3xl text-secondary mb-6 shadow-[0_0_30px_rgba(248,160,16,0.3)]">3</div>
-                <h3 class="font-headline font-black uppercase tracking-widest mb-2">¡Gana el Jackpot!</h3>
+                <h3 class="font-headline font-black uppercase tracking-widest mb-2">¡Gana el Oxapot!</h3>
                 <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Si tu ticket es el elegido, el premio es tuyo. ¡Así de simple!</p>
             </div>
         </div>
@@ -323,6 +341,39 @@
 </div>
 
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper(".myGallery", {
+        loop: true,
+        spaceBetween: 15,
+        grabCursor: true,
+
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+
+        breakpoints: {
+            0: {
+                slidesPerView: 2
+            },
+            640: {
+                slidesPerView: 3
+            },
+            1024: {
+                slidesPerView: 4
+            },
+            1280: {
+                slidesPerView: 5
+            }
+        }
+    });
+</script>
 
 <script>
     // Fecha del sorteo desde Laravel
