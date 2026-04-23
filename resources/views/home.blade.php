@@ -136,7 +136,7 @@
         </div>
     </section>
 
-    @if($winners)
+    @if($winners->count() > 0)
     <div class="swiper myGallery px-4">
         <h2 class="text-3xl font-headline font-black uppercase tracking-tighter text-center mb-16">Nuestros <span class="text-primary italic">Ganadores</span></h2>
         <div class="swiper-wrapper">
