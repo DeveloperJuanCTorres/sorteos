@@ -296,6 +296,24 @@
                             </select>
                         </div>
 
+                        <div class="col-md-6">
+                            <label class="form-label">Número Yape</label>
+
+                            <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
+                                style="background-color: rgba(255, 255, 255, 0.05)">
+
+                                <div class="fw-bold text-white" id="yapeNumero"
+                                    data-numero="{{ $empresa->whatsapp }}">
+                                    {{ $empresa->whatsapp }}
+                                </div>
+
+                                <button type="button" id="btnCopiarYape"
+                                        class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
+                                    📋
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- SECCIÓN PAGO -->
@@ -621,6 +639,35 @@
         if(fileInput){
             fileInput.value = '';
         }
+
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const btnCopiar = document.getElementById("btnCopiarYape");
+        const yapeNumero = document.getElementById("yapeNumero");
+
+        btnCopiar.addEventListener("click", function () {
+
+            const numeroReal = yapeNumero.dataset.numero;
+
+            navigator.clipboard.writeText(numeroReal).then(() => {
+
+                btnCopiar.innerHTML = "✔";
+                btnCopiar.classList.remove("btn-light");
+                btnCopiar.classList.add("btn-success");
+
+                setTimeout(() => {
+                    btnCopiar.innerHTML = "📋";
+                    btnCopiar.classList.remove("btn-success");
+                    btnCopiar.classList.add("btn-light");
+                }, 1500);
+
+            });
+
+        });
 
     });
 </script>
