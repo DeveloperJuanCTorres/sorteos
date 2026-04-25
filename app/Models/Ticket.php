@@ -18,7 +18,9 @@ class Ticket extends Model
         'telefono',
         'departamento',
         'comprobante',
-        'aprobado'
+        'aprobado',
+        'cantidad',
+        'email'
     ];
 
     public function getAprobadoBadgeAttribute()

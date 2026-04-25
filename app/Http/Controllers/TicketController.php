@@ -66,18 +66,12 @@ class TicketController extends Controller
             'departamento' => 'required|string',
 
             'comprobante' => 'required|file|mimes:jpg,jpeg,png|max:2048', // 2MB
+
+            'raffle_id' => 'required|exists:raffles,id',
+            'cantidad'  => 'required|integer|min:1|max:100',
         ]);
 
-        // $request->validate([
-        //     'numero_documento' => 'required',
-        //     'nombres' => 'required',
-        //     'apellidos' => 'required',
-        //     'telefono' => 'required',
-        //     'departamento' => 'required',
-        //     'comprobante' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        // ]);
-
-        $sorteo = Raffle::where('active', 1)->first();
+        $sorteo = Raffle::findOrFail($request->raffle_id);
 
         // Guardar archivo
         $rutaComprobante = null;
@@ -94,7 +88,9 @@ class TicketController extends Controller
             'telefono'    => $request->telefono,
             'departamento'=> $request->departamento,
             'comprobante' => $rutaComprobante,
-            'aprobado'    => 0
+            'aprobado'    => 0,
+            'cantidad'    => $request->cantidad,
+            'email'       => $request->correo
         ]);
 
         return response()->json([

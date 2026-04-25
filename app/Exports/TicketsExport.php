@@ -16,8 +16,30 @@ class TicketsExport implements FromCollection
 
     public function collection()
     {
-        return Ticket::where('sorteo_id', $this->raffle_id)
+        $tickets = Ticket::where('sorteo_id', $this->raffle_id)
             ->where('aprobado', 1)
-            ->get(['id','dni','nombres','apellidos']);
+            ->get();
+
+        $resultado = collect();
+
+        foreach ($tickets as $t) {
+            for ($i = 0; $i < $t->cantidad; $i++) {
+                $resultado->push([
+                    'ticket'    => $t->id . '-' . ($i + 1),
+                    'dni'       => $t->dni,
+                    'nombres'   => $t->nombres,
+                    'apellidos' => $t->apellidos,
+                ]);
+            }
+        }
+
+        return $resultado;
     }
+
+    // public function collection()
+    // {
+    //     return Ticket::where('sorteo_id', $this->raffle_id)
+    //         ->where('aprobado', 1)
+    //         ->get(['id','dni','nombres','apellidos']);
+    // }
 }

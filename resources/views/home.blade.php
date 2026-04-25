@@ -191,26 +191,6 @@
             <div class="modal-header border-0 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
 
-                    <label class="form-label text-white mb-0">
-                        Sorteo:
-                    </label>
-
-                    <select name="raffle_id" 
-                        class="form-select bg-dark text-white border-0"
-                        style="width: auto; min-width: 220px;" required>
-
-                        @foreach($sorteos as $item)
-                            <option value="{{ $item->id }}" 
-                                {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
-                                
-                                {{ $item->name }} - 
-                                {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
-
-                            </option>
-                        @endforeach
-
-                    </select>
-
                 </div>
                 
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
@@ -220,6 +200,22 @@
             <div class="modal-body text-white">
 
                 <form id="formRegistro" enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <!-- <label class="form-label text-white">Sorteo:</label> -->
+                        <select name="raffle_id" 
+                            class="form-select bg-dark text-white border-0" required>
+
+                            @foreach($sorteos as $item)
+                                <option value="{{ $item->id }}" 
+                                    {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
+                                    {{ $item->name }} - 
+                                    {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
 
                     <div class="row g-3">
 
@@ -239,7 +235,7 @@
                             <label class="form-label">Número de Documento</label>
                             <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
                         </div>
-
+                        
                         <!-- Nombres -->
                         <div class="col-md-6">
                             <label class="form-label">Nombres</label>
@@ -256,13 +252,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Correo</label>
                             <input type="email" class="form-control bg-dark text-white border-0" name="correo" required>
-                        </div>
-
-                        <!-- Teléfono -->
-                        <div class="col-md-6">
-                            <label class="form-label">Teléfono</label>
-                            <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
-                        </div>
+                        </div>                        
 
                         <div class="col-md-6">
                             <label class="form-label">Departamento</label>
@@ -296,21 +286,36 @@
                             </select>
                         </div>
 
+                        <!-- Teléfono -->
                         <div class="col-md-6">
-                            <label class="form-label">Número Yape</label>
+                            <label class="form-label">WhatsApp</label>
+                            <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
+                        </div>
 
-                            <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
-                                style="background-color: rgba(255, 255, 255, 0.05)">
+                        <!-- Cantidad de Tickets -->
+                        <div class="col-md-6">
+                            <label class="form-label">Cantidad de Tickets</label>
 
-                                <div class="fw-bold text-white" id="yapeNumero"
-                                    data-numero="{{ $empresa->whatsapp }}">
-                                    {{ $empresa->whatsapp }}
-                                </div>
+                            <div class="d-flex align-items-center rounded-4 px-3"
+                                style="height: 48px;">
 
-                                <button type="button" id="btnCopiarYape"
-                                        class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
-                                    📋
+                                <button type="button" class="btn btn-sm text-white" id="btnMenos">
+                                    ➖
                                 </button>
+
+                                <input type="number" 
+                                    class="form-control bg-transparent border-0 text-white text-center fw-bold"
+                                    name="cantidad"
+                                    id="cantidadTickets"
+                                    value="1"
+                                    min="1"
+                                    readonly
+                                    style="max-width: 80px;">
+
+                                <button type="button" class="btn btn-sm text-white" id="btnMas">
+                                    ➕
+                                </button>
+
                             </div>
                         </div>
 
@@ -318,23 +323,99 @@
 
                     <!-- SECCIÓN PAGO -->
                     <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
-                        <h6 class="fw-bold mb-3">Pago por Yape</h6>
+                        
 
                         <div class="row align-items-center">
 
-                            <!-- QR -->
+                            <!-- QR + PRECIO -->
                             <div class="col-md-5 text-center">
+                                <h6 class="fw-bold mb-3">Pago por Yape</h6>
+
                                 <img src="{{ asset('img/yape-qr1.jpeg') }}" 
                                     alt="QR Yape" 
-                                    class="img-fluid rounded shadow"
-                                    style="max-width: 200px;">
+                                    class="img-fluid rounded shadow mb-3 m-auto"
+                                    style="max-width: 200px;">       
+                                    
                                 <p class="mt-2 small">Escanea para pagar</p>
+                                <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
+                                    style="background-color: rgba(255, 255, 255, 0.05)">
+
+                                    <div class="fw-bold text-white" id="yapeNumero"
+                                        data-numero="{{ $empresa->whatsapp }}">
+                                        {{ $empresa->whatsapp }}
+                                    </div>
+
+                                    <button type="button" id="btnCopiarYape"
+                                            class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
+                                        Copiar📋
+                                    </button>
+                                </div>
                             </div>
 
                             <!-- Upload -->
                             <div class="col-md-7">
-                                <label class="form-label">Adjuntar comprobante</label>
-                                <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- PRECIO -->
+                                        <div class="p-3 rounded-4 mb-2"
+                                            style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+
+                                            <div class="small text-white">Precio por Ticket</div>
+                                            <div class="fw-bold fs-4 text-white">
+                                                S/ {{ number_format($sorteo->price, 2) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- TOTAL -->
+                                        <div class="p-3 rounded-4 mb-2"
+                                            style="background-color: rgba(255,255,255,0.08);">
+
+                                            <div class="small text-white">Total a pagar</div>
+                                            <div class="fw-bold fs-4 text-success" id="totalPagar">
+                                                S/ {{ number_format($sorteo->price, 2) }}
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-7 m-auto text-center">
+                                    <label class="form-label">Adjuntar comprobante</label>
+
+                                    <!-- Contenedor -->
+                                    <div id="dropZone" 
+                                        class="p-4 text-center rounded-4 position-relative"
+                                        style="background-color: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s;">
+
+                                        <!-- Icono -->
+                                        <div class="mb-2" style="font-size: 32px;">📤</div>
+
+                                        <!-- Texto -->
+                                        <div class="fw-bold">Sube tu comprobante</div>
+                                        <div class="small text-white-50">Arrastra o haz clic aquí</div>
+
+                                        <!-- Nombre archivo -->
+                                        <div id="fileName" class="mt-2 text-success small"></div>
+
+                                        <!-- Input real oculto -->
+                                        <input type="file" 
+                                            id="inputComprobante"
+                                            name="comprobante"
+                                            accept="image/*,.pdf"
+                                            class="position-absolute top-0 start-0 w-100 h-100 opacity-0"
+                                            required>
+                                    </div>
+
+                                    <!-- Preview -->
+                                    <!-- <div id="previewContainer" class="mt-3 text-center d-none">
+                                        <img id="previewImg" class="img-fluid rounded shadow" style="max-height: 150px;">
+                                    </div> -->
+
+                                </div>
+
+
+                                <!-- <label class="form-label">Adjuntar comprobante</label>
+                                <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required> -->
                             </div>
 
                         </div>
@@ -634,6 +715,13 @@
             el.value = '';
         });
 
+        // Restaurar valor por defecto de cantidad
+        document.getElementById('cantidadTickets').value = 1;
+
+     
+        // Limpiar nombre mostrado
+        document.getElementById('fileName').textContent = '';
+
         // 🧼 Limpiar archivo (importante)
         const fileInput = form.querySelector('[name="comprobante"]');
         if(fileInput){
@@ -655,12 +743,12 @@
 
             navigator.clipboard.writeText(numeroReal).then(() => {
 
-                btnCopiar.innerHTML = "✔";
+                btnCopiar.innerHTML = "Copiado ✔";
                 btnCopiar.classList.remove("btn-light");
                 btnCopiar.classList.add("btn-success");
 
                 setTimeout(() => {
-                    btnCopiar.innerHTML = "📋";
+                    btnCopiar.innerHTML = "Copiar📋";
                     btnCopiar.classList.remove("btn-success");
                     btnCopiar.classList.add("btn-light");
                 }, 1500);
@@ -669,6 +757,69 @@
 
         });
 
+    });
+</script>
+
+<script>
+    const precio = {{ $sorteo->price ?? 0 }};
+    const inputCantidad = document.getElementById('cantidadTickets');
+    const total = document.getElementById('totalPagar');
+
+    document.getElementById('btnMas').onclick = () => {
+        inputCantidad.value = parseInt(inputCantidad.value) + 1;
+        calcularTotal();
+    };
+
+    document.getElementById('btnMenos').onclick = () => {
+        if (inputCantidad.value > 1) {
+            inputCantidad.value = parseInt(inputCantidad.value) - 1;
+            calcularTotal();
+        }
+    };
+
+    inputCantidad.addEventListener('input', calcularTotal);
+
+    function calcularTotal() {
+        let cantidad = parseInt(inputCantidad.value) || 1;
+        let totalFinal = cantidad * precio;
+        total.innerText = 'S/ ' + totalFinal.toFixed(2);
+    }
+</script>
+
+<script>
+    const inputFile = document.getElementById('inputComprobante');
+    const fileName = document.getElementById('fileName');
+    const previewContainer = document.getElementById('previewContainer');
+    const previewImg = document.getElementById('previewImg');
+    const dropZone = document.getElementById('dropZone');
+
+    inputFile.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            fileName.textContent = "Archivo: " + file.name;
+
+            // Preview solo si es imagen
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewContainer.classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.classList.add('d-none');
+            }
+        }
+    });
+
+    // Efecto hover
+    dropZone.addEventListener('mouseover', () => {
+        dropZone.style.borderColor = '#0d6efd';
+    });
+
+    dropZone.addEventListener('mouseleave', () => {
+        dropZone.style.borderColor = 'rgba(255,255,255,0.2)';
     });
 </script>
 

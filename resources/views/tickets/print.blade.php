@@ -45,16 +45,19 @@ body{
 <div class="grid">
 
 @foreach($tickets as $t)
-<div class="ticket">
-    <div>
-        <h3>{{ $t->nombres }} {{ $t->apellidos }}</h3>
-        <small>DNI: {{ $t->dni }}</small>
-    </div>
+    @for($i = 0; $i < $t->cantidad; $i++)
+    <div class="ticket">
+        <div>
+            <h3>{{ $t->sorteo->name }} </h3>
+            <h3>{{ $t->nombres }} {{ $t->apellidos }}</h3>
+            <small>DNI: {{ $t->dni }}</small>
+        </div>
 
-    <div>
-        <strong>#{{ $t->id }}</strong>
+        <div>
+            <strong>#{{ $t->id }} - {{ $i + 1 }}</strong>
+        </div>
     </div>
-</div>
+    @endfor
 @endforeach
 
 </div>
