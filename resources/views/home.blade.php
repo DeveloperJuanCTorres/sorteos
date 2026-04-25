@@ -711,10 +711,7 @@
         // 🔄 Resetear formulario
         form.reset();
 
-        // 🧹 Limpiar inputs manuales (por si acaso)
-        form.querySelectorAll('input, select').forEach(el => {
-            el.value = '';
-        });
+         
 
         // Restaurar valor por defecto de cantidad
         document.getElementById('cantidadTickets').value = 1;
