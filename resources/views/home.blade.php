@@ -475,11 +475,7 @@
     // Fecha del sorteo desde Laravel
 
 
-    let fechaSorteo = {
-        !!($sorteo && $sorteo - > date) ?
-        '"'.\Carbon\ Carbon::parse($sorteo - > date) - > format('Y-m-d H:i:s').
-        '"' : 'null'!!
-    };
+    let fechaSorteo = @json($sorteo && $sorteo->date ? \Carbon\Carbon::parse($sorteo->date)->format('Y-m-d H:i:s') : null);
 
     fechaSorteo = fechaSorteo ? new Date(fechaSorteo).getTime() : null;
 
