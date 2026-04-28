@@ -8,8 +8,8 @@
     <!-- Hero Section: Featured Sweepstakes -->
     <section class="rounded-[2rem] overflow-hidden min-h-[500px] flex items-end p-8 md:p-16">
         <div class="absolute inset-0 z-0">
-            <img alt="Tesla Sweepstakes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="high performance electric sports car in a dark futuristic showroom with electric blue neon lights and polished floor reflections" 
-                    src="img/banner1.jpg"/>
+            <img alt="Tesla Sweepstakes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="high performance electric sports car in a dark futuristic showroom with electric blue neon lights and polished floor reflections"
+                src="img/banner1.jpg" />
             <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
         </div>
         <div class="relative z-10 w-full max-w-2xl">
@@ -18,7 +18,7 @@
                 <span class="text-xs font-black tracking-widest uppercase font-label">Sorteo Destacado</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-headline font-black tracking-tighter leading-[0.9] mb-4">
-                        LOS MEJORES <br/><span class="text-primary italic">SORTEOS AQUÍ</span>
+                LOS MEJORES <br /><span class="text-primary italic">SORTEOS AQUÍ</span>
             </h1>
             <div class="flex flex-wrap items-center gap-6 mt-8">
                 <div class="flex gap-4">
@@ -35,9 +35,9 @@
                         <span class="text-[10px] uppercase font-black text-on-surface-variant tracking-widest">Min</span>
                     </div>
                 </div>
-                <button data-bs-toggle="modal" 
-                        data-bs-target="#modalRegistro"
-                        class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed px-10 py-3 rounded-full font-headline font-black text-xl uppercase tracking-tighter shadow-[0_0_40px_rgba(144,171,255,0.4)] hover:shadow-[0_0_60px_rgba(144,171,255,0.6)] transition-all active:scale-95 duration-200">
+                <button data-bs-toggle="modal"
+                    data-bs-target="#modalRegistro"
+                    class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed px-10 py-3 rounded-full font-headline font-black text-xl uppercase tracking-tighter shadow-[0_0_40px_rgba(144,171,255,0.4)] hover:shadow-[0_0_60px_rgba(144,171,255,0.6)] transition-all active:scale-95 duration-200">
                     Participar Ahora
                 </button>
             </div>
@@ -52,7 +52,7 @@
             </div>
             <div>
                 <h2 class="text-2xl md:text-3xl font-headline font-black uppercase tracking-tighter leading-none">
-                        Siguiente <span class="text-primary">Gran Sorteo</span>
+                    Siguiente <span class="text-primary">Gran Sorteo</span>
                 </h2>
                 <p class="text-on-surface-variant text-sm mt-1 font-bold uppercase tracking-widest">¡No te quedes fuera!</p>
             </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="flex flex-col items-center">
                 <div class="bg-background border-2 border-primary/40 w-16 h-20 md:w-20 md:h-24 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.2)]">
-                    <span  id="minutos" class="text-3xl md:text-5xl font-headline font-black text-primary">52</span>
+                    <span id="minutos" class="text-3xl md:text-5xl font-headline font-black text-primary">52</span>
                 </div>
                 <span class="text-[10px] font-black uppercase tracking-widest mt-2 text-on-surface-variant">Min</span>
             </div>
@@ -83,9 +83,9 @@
                 <span class="text-[10px] font-black uppercase tracking-widest mt-2 text-primary animate-pulse">Seg</span>
             </div>
         </div>
-        <button data-bs-toggle="modal" 
-                data-bs-target="#modalRegistro"
-                class="relative z-10 bg-primary hover:bg-primary-dim text-on-primary-fixed px-8 py-4 rounded-2xl font-headline font-black uppercase tracking-tighter transition-all active:scale-95 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+        <button data-bs-toggle="modal"
+            data-bs-target="#modalRegistro"
+            class="relative z-10 bg-primary hover:bg-primary-dim text-on-primary-fixed px-8 py-4 rounded-2xl font-headline font-black uppercase tracking-tighter transition-all active:scale-95 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
             Obtener Tickets
         </button>
     </section>
@@ -96,7 +96,7 @@
         <div class="flex justify-between items-end mb-8">
             <div>
                 @if($sorteo)
-                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios  <span class="text-primary-container">{{$sorteo->name}}</span></h2>
+                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios <span class="text-primary-container">{{$sorteo->name}}</span></h2>
                 @endif
                 <p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-black">Tu próxima victoria está a un ticket de distancia</p>
             </div>
@@ -104,11 +104,11 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Cards -->
-             @foreach($premios as $premio)
+            @foreach($premios as $premio)
             <div class="bg-surface-container-highest rounded-[1.5rem] overflow-hidden group border border-outline-variant/10">
                 <div class="relative h-48">
-                    <img alt="Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="insane gaming setup with three monitors, vertical rgb strips, high end pc case, and ergonomic chair in a dark room" 
-                        src="{{asset('storage/' . $premio->image)}}"/>
+                    <img alt="Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="insane gaming setup with three monitors, vertical rgb strips, high end pc case, and ergonomic chair in a dark room"
+                        src="{{asset('storage/' . $premio->image)}}" />
                     <div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 text-primary">
                         {{$premio->cantidad}} Premios
                     </div>
@@ -132,7 +132,7 @@
             </div>
             @endforeach
             <!-- end cards -->
-            
+
         </div>
     </section>
 
@@ -144,7 +144,7 @@
             @foreach($winners as $winner)
             <div class="swiper-slide">
                 <div class="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="{{ asset('storage/' . $winner->image) }}" 
+                    <img src="{{ asset('storage/' . $winner->image) }}"
                         class="w-full h-[180px] object-cover">
                 </div>
             </div>
@@ -179,11 +179,11 @@
     </section>
 
 
-   
+
 </main>
 
 <!-- Modal -->
- @if($sorteo)
+@if($sorteo)
 <div class="modal fade" id="modalRegistro" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
@@ -191,9 +191,9 @@
             <!-- Header -->
             <div class="modal-header border-0 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
-
+                    <h2 class="text-primary">Formulario de registro de ticket</h2>
                 </div>
-                
+
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
 
@@ -203,28 +203,29 @@
                 <form id="formRegistro" enctype="multipart/form-data">
 
                     <div class="mb-3">
-                        <!-- <label class="form-label text-white">Sorteo:</label> -->
-                        <select name="raffle_id" 
-                            class="form-select bg-dark text-white border-0" required>
 
-                            @foreach($sorteos as $item)
-                                <option value="{{ $item->id }}" 
-                                    {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
-                                    {{ $item->name }} - 
-                                    {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
-                                </option>
-                            @endforeach
-
-                        </select>
                     </div>
 
                     <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-white">Sorteo:</label>
+                            <select name="raffle_id"
+                                class="form-select bg-dark text-white border-0" required>
 
+                                @foreach($sorteos as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
+                                    {{ $item->name }} -
+                                    {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
+                                </option>
+                                @endforeach
+
+                            </select>
+                        </div>
                         <!-- Tipo Documento -->
                         <div class="col-md-6">
                             <label class="form-label">Tipo de Documento</label>
                             <select class="form-select bg-dark text-white border-0" name="tipo_documento" required>
-                                <option class="text-black" value="">Seleccionar</option>
                                 <option class="text-black" value="dni">DNI</option>
                                 <option class="text-black" value="ce">Carnet de Extranjería</option>
                                 <option class="text-black" value="pasaporte">Pasaporte</option>
@@ -236,7 +237,7 @@
                             <label class="form-label">Número de Documento</label>
                             <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
                         </div>
-                        
+
                         <!-- Nombres -->
                         <div class="col-md-6">
                             <label class="form-label">Nombres</label>
@@ -248,12 +249,6 @@
                             <label class="form-label">Apellidos</label>
                             <input type="text" class="form-control bg-dark text-white border-0" name="apellidos" required>
                         </div>
-
-                        <!-- Correo -->
-                        <div class="col-md-6">
-                            <label class="form-label">Correo</label>
-                            <input type="email" class="form-control bg-dark text-white border-0" name="correo" required>
-                        </div>                        
 
                         <div class="col-md-6">
                             <label class="form-label">Departamento</label>
@@ -304,7 +299,7 @@
                                     ➖
                                 </button>
 
-                                <input type="number" 
+                                <input type="number"
                                     class="form-control bg-transparent border-0 text-white text-center fw-bold"
                                     name="cantidad"
                                     id="cantidadTickets"
@@ -324,7 +319,7 @@
 
                     <!-- SECCIÓN PAGO -->
                     <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
-                        
+
 
                         <div class="row align-items-center">
 
@@ -332,11 +327,11 @@
                             <div class="col-md-5 text-center">
                                 <h6 class="fw-bold mb-3">Pago por Yape</h6>
 
-                                <img src="{{ asset('img/yape-qr1.jpeg') }}" 
-                                    alt="QR Yape" 
+                                <img src="{{ asset('img/yape-qr1.jpeg') }}"
+                                    alt="QR Yape"
                                     class="img-fluid rounded shadow mb-3 m-auto"
-                                    style="max-width: 200px;">       
-                                    
+                                    style="max-width: 200px;">
+
                                 <p class="mt-2 small">Escanea para pagar</p>
                                 <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
                                     style="background-color: rgba(255, 255, 255, 0.05)">
@@ -347,7 +342,7 @@
                                     </div>
 
                                     <button type="button" id="btnCopiarYape"
-                                            class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
+                                        class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
                                         Copiar📋
                                     </button>
                                 </div>
@@ -376,15 +371,15 @@
                                             <div class="fw-bold fs-4 text-success" id="totalPagar">
                                                 S/ {{ number_format($sorteo->price, 2) }}
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-7 m-auto text-center">
                                     <label class="form-label">Adjuntar comprobante</label>
 
                                     <!-- Contenedor -->
-                                    <div id="dropZone" 
+                                    <div id="dropZone"
                                         class="p-4 text-center rounded-4 position-relative"
                                         style="background-color: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s;">
 
@@ -399,7 +394,7 @@
                                         <div id="fileName" class="mt-2 text-success small"></div>
 
                                         <!-- Input real oculto -->
-                                        <input type="file" 
+                                        <input type="file"
                                             id="inputComprobante"
                                             name="comprobante"
                                             accept="image/*,.pdf"
@@ -442,10 +437,11 @@
 @endif
 
 <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
 <script>
     const swiper = new Swiper(".myGallery", {
@@ -477,14 +473,16 @@
 
 <script>
     // Fecha del sorteo desde Laravel
-    
 
-    let fechaSorteo = {!! ($sorteo && $sorteo->date) 
-        ? '"' . \Carbon\Carbon::parse($sorteo->date)->format('Y-m-d H:i:s') . '"' 
-        : 'null' !!};
+
+    let fechaSorteo = {
+        !!($sorteo && $sorteo - > date) ?
+        '"'.\Carbon\ Carbon::parse($sorteo - > date) - > format('Y-m-d H:i:s').
+        '"' : 'null'!!
+    };
 
     fechaSorteo = fechaSorteo ? new Date(fechaSorteo).getTime() : null;
-    
+
 
     function actualizarContador() {
 
@@ -549,35 +547,34 @@
         let formData = new FormData(this);
 
         fetch("{{ route('tickets.store') }}", {
-            method: "POST",
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                document.getElementById('formRegistro').reset();
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    document.getElementById('formRegistro').reset();
 
-                let modal = bootstrap.Modal.getInstance(document.getElementById('modalRegistro'));
-                modal.hide();
-            }
-        })
-        .catch(err => console.error(err));
+                    let modal = bootstrap.Modal.getInstance(document.getElementById('modalRegistro'));
+                    modal.hide();
+                }
+            })
+            .catch(err => console.error(err));
     });
 </script>
 
 <script>
-    document.getElementById('formRegistro').addEventListener('submit', function(e){
+    document.getElementById('formRegistro').addEventListener('submit', function(e) {
 
         const tipo = document.querySelector('[name="tipo_documento"]').value;
         const numero = document.querySelector('[name="numero_documento"]').value.trim();
         const nombres = document.querySelector('[name="nombres"]').value.trim();
         const apellidos = document.querySelector('[name="apellidos"]').value.trim();
         const telefono = document.querySelector('[name="telefono"]').value.trim();
-        const correo = document.querySelector('[name="correo"]').value.trim();
         const file = document.querySelector('[name="comprobante"]').files[0];
 
         // 🚫 Regex seguros (solo letras y números básicos)
@@ -586,53 +583,61 @@
         const regexTelefono = /^[0-9]{9}$/;
 
         // ❌ Validaciones
-        if(!regexTexto.test(nombres)){
+        if (!regexTexto.test(nombres)) {
             alert('Nombres inválidos');
-            e.preventDefault(); return;
+            e.preventDefault();
+            return;
         }
 
-        if(!regexTexto.test(apellidos)){
+        if (!regexTexto.test(apellidos)) {
             alert('Apellidos inválidos');
-            e.preventDefault(); return;
+            e.preventDefault();
+            return;
         }
 
-        if(tipo === 'dni'){
-            if(!regexNumero.test(numero) || numero.length !== 8){
+        if (tipo === 'dni') {
+            if (!regexNumero.test(numero) || numero.length !== 8) {
                 alert('El DNI debe tener 8 dígitos numéricos');
-                e.preventDefault(); return;
+                e.preventDefault();
+                return;
             }
         }
 
-        if(tipo === 'ce'){
-            if(numero.length < 9){
+        if (tipo === 'ce') {
+            if (numero.length < 9) {
                 alert('Carnet de extranjería inválido');
-                e.preventDefault(); return;
+                e.preventDefault();
+                return;
             }
         }
 
-        if(tipo === 'pasaporte'){
-            if(numero.length < 6){
+        if (tipo === 'pasaporte') {
+            if (numero.length < 6) {
                 alert('Pasaporte inválido');
-                e.preventDefault(); return;
+                e.preventDefault();
+                return;
             }
         }
 
-        if(!regexTelefono.test(telefono)){
+        if (!regexTelefono.test(telefono)) {
             alert('Teléfono debe tener 9 dígitos');
-            e.preventDefault(); return;
+            e.preventDefault();
+            return;
         }
 
         // 📎 Validar archivo
-        if(file){
-            const allowedTypes = ['image/jpeg','image/png','image/jpg'];
-            if(!allowedTypes.includes(file.type)){
+        if (file) {
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (!allowedTypes.includes(file.type)) {
                 alert('Solo se permiten imágenes JPG o PNG');
-                e.preventDefault(); return;
+                e.preventDefault();
+                return;
             }
 
-            if(file.size > 2 * 1024 * 1024){
+            if (file.size > 2 * 1024 * 1024) {
                 alert('La imagen no debe superar los 2MB');
-                e.preventDefault(); return;
+                e.preventDefault();
+                return;
             }
         }
 
@@ -641,21 +646,21 @@
 
 <script>
     // Solo números en documento
-    document.querySelector('[name="numero_documento"]').addEventListener('input', function(){
+    document.querySelector('[name="numero_documento"]').addEventListener('input', function() {
         this.value = this.value.replace(/[^0-9a-zA-Z]/g, '');
     });
 
     // Solo letras en nombres
-    document.querySelector('[name="nombres"]').addEventListener('input', function(){
+    document.querySelector('[name="nombres"]').addEventListener('input', function() {
         this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
     });
 
-    document.querySelector('[name="apellidos"]').addEventListener('input', function(){
+    document.querySelector('[name="apellidos"]').addEventListener('input', function() {
         this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
     });
 
     // Solo números en teléfono
-    document.querySelector('[name="telefono"]').addEventListener('input', function(){
+    document.querySelector('[name="telefono"]').addEventListener('input', function() {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
 </script>
@@ -669,13 +674,13 @@
 
         numDoc.value = ''; // limpiar
 
-        if(this.value === 'dni'){
+        if (this.value === 'dni') {
             numDoc.setAttribute('maxlength', '8');
             numDoc.setAttribute('inputmode', 'numeric');
-        } else if(this.value === 'ce'){
+        } else if (this.value === 'ce') {
             numDoc.setAttribute('maxlength', '12');
             numDoc.removeAttribute('inputmode');
-        } else if(this.value === 'pasaporte'){
+        } else if (this.value === 'pasaporte') {
             numDoc.setAttribute('maxlength', '12');
             numDoc.removeAttribute('inputmode');
         } else {
@@ -685,16 +690,16 @@
     });
 
     // ⛔ Validación en tiempo real mientras escribe
-    numDoc.addEventListener('input', function(){
+    numDoc.addEventListener('input', function() {
 
         const tipo = tipoDoc.value;
 
-        if(tipo === 'dni'){
+        if (tipo === 'dni') {
             // solo números
             this.value = this.value.replace(/[^0-9]/g, '');
         }
 
-        if(tipo === 'ce' || tipo === 'pasaporte'){
+        if (tipo === 'ce' || tipo === 'pasaporte') {
             // letras y números (sin símbolos raros)
             this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');
         }
@@ -706,23 +711,20 @@
     const modal = document.getElementById('modalRegistro');
     const form = document.getElementById('formRegistro');
 
-    modal.addEventListener('hidden.bs.modal', function () {
+    modal.addEventListener('hidden.bs.modal', function() {
 
         // 🔄 Resetear formulario
         form.reset();
 
-         
-
         // Restaurar valor por defecto de cantidad
         document.getElementById('cantidadTickets').value = 1;
 
-     
         // Limpiar nombre mostrado
         document.getElementById('fileName').textContent = '';
 
         // 🧼 Limpiar archivo (importante)
         const fileInput = form.querySelector('[name="comprobante"]');
-        if(fileInput){
+        if (fileInput) {
             fileInput.value = '';
         }
 
@@ -730,12 +732,12 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
 
         const btnCopiar = document.getElementById("btnCopiarYape");
         const yapeNumero = document.getElementById("yapeNumero");
 
-        btnCopiar.addEventListener("click", function () {
+        btnCopiar.addEventListener("click", function() {
 
             const numeroReal = yapeNumero.dataset.numero;
 
@@ -760,6 +762,7 @@
 
 <script>
     const precio = {{ $sorteo->price ?? 0 }};
+    
     const inputCantidad = document.getElementById('cantidadTickets');
     const total = document.getElementById('totalPagar');
 

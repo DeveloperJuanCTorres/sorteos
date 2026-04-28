@@ -60,7 +60,6 @@ class TicketController extends Controller
             'nombres' => 'required|regex:/^[\pL\s]+$/u',
             'apellidos' => 'required|regex:/^[\pL\s]+$/u',
 
-            'correo' => 'required|email',
             'telefono' => 'required|digits:9',
 
             'departamento' => 'required|string',
@@ -89,8 +88,7 @@ class TicketController extends Controller
             'departamento'=> $request->departamento,
             'comprobante' => $rutaComprobante,
             'aprobado'    => 0,
-            'cantidad'    => $request->cantidad,
-            'email'       => $request->correo
+            'cantidad'    => $request->cantidad
         ]);
 
         return response()->json([
