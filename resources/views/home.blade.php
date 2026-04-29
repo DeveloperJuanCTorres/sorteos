@@ -95,11 +95,11 @@
     <section>
         <div class="flex justify-between items-end mb-8">
             @if($sorteo)
-            <div style="z-index: 99;">                
+            <div style="z-index: 10;">                
                 <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios <span class="text-primary-container">{{$sorteo->name}}</span></h2>                
                 <p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-black">Tu próxima victoria está a un ticket de distancia</p>
             </div>            
-            <button class="text-primary font-black uppercase text-sm tracking-widest hover:underline transition-all" style="z-index: 99;">Ver todos</button>
+            <button class="text-primary font-black uppercase text-sm tracking-widest hover:underline transition-all" style="z-index: 10;">Ver todos</button>
             @endif
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
