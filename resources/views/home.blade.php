@@ -162,18 +162,18 @@
             <div class="hidden md:block absolute top-20 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
             <div class="flex flex-col items-center text-center relative z-10">
                 <div class="w-16 h-16 bg-surface-bright rounded-2xl flex items-center justify-center font-headline font-black text-3xl text-primary mb-6 shadow-[0_0_20px_rgba(144,171,255,0.2)]">1</div>
-                <h3 class="font-headline font-black uppercase tracking-widest mb-2">Elige tu Premio</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Selecciona entre autos, tecnología o efectivo y compra tus tickets.</p>
+                <h3 class="font-headline font-black uppercase tracking-widest mb-2">Asegura tus números</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Compra tu ticket y participa por todos los premios del Sorteo. Es fácil, rápido y seguro.</p>
             </div>
             <div class="flex flex-col items-center text-center relative z-10">
                 <div class="w-16 h-16 bg-surface-bright rounded-2xl flex items-center justify-center font-headline font-black text-3xl text-primary mb-6 shadow-[0_0_20px_rgba(144,171,255,0.2)]">2</div>
-                <h3 class="font-headline font-black uppercase tracking-widest mb-2">Espera el Sorteo</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Nuestros sorteos son en vivo y certificados para máxima transparencia.</p>
+                <h3 class="font-headline font-black uppercase tracking-widest mb-2">Espera el Sorteo en vivo</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">El sorteo se realizará en vivo y con total transparencia para que todos puedan ver a los ganadores.</p>
             </div>
             <div class="flex flex-col items-center text-center relative z-10">
                 <div class="w-16 h-16 bg-surface-bright rounded-2xl flex items-center justify-center font-headline font-black text-3xl text-secondary mb-6 shadow-[0_0_30px_rgba(248,160,16,0.3)]">3</div>
-                <h3 class="font-headline font-black uppercase tracking-widest mb-2">¡Gana el Oxapot!</h3>
-                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Si tu ticket es el elegido, el premio es tuyo. ¡Así de simple!</p>
+                <h3 class="font-headline font-black uppercase tracking-widest mb-2">¡El ganador puedes ser tú!</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Si tu numero es elegido, tu te llevas el premio. Así de siemple.</p>
             </div>
         </div>
     </section>
