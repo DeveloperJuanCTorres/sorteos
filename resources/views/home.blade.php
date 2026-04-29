@@ -105,7 +105,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($premios as $premio)
             <div class="group relative bg-surface-container-highest rounded-[2rem] overflow-hidden transition-all duration-500 hover:translate-y-[-8px]">
-                <div class="relative h-48 overflow-hidden">
+                <div class="relative h-72 overflow-hidden">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                             src="{{asset ('storage/' . $premio->image)}}"/>
                     <!-- Hexagon Badge -->
