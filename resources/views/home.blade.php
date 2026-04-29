@@ -103,14 +103,34 @@
             @endif
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Cards -->
             @foreach($premios as $premio)
             <div class="bg-surface-container-highest rounded-[1.5rem] overflow-hidden group border border-outline-variant/10">
                 <div class="relative h-48">
                     <img alt="Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="insane gaming setup with three monitors, vertical rgb strips, high end pc case, and ergonomic chair in a dark room"
                         src="{{asset('storage/' . $premio->image)}}" />
-                    <div class="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/20 text-primary">
-                        {{$premio->cantidad}} Premios
+                    <div class="absolute top-3 right-3 z-20">
+                        <div class="relative w-14 h-14">
+
+                            <!-- Glow -->
+                            <div class="absolute inset-0 rounded-full bg-yellow-400 blur-xl opacity-70"></div>
+
+                            <!-- Ficha -->
+                            <div class="relative w-full h-full rounded-full 
+                                        bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600
+                                        border-[3px] border-white/30
+                                        shadow-[0_0_25px_rgba(255,215,0,0.9),inset_0_0_10px_rgba(255,255,255,0.4)]
+                                        flex items-center justify-center">
+
+                                <!-- Anillo interno -->
+                                <div class="absolute inset-2 rounded-full border-2 border-dashed border-black/20"></div>
+
+                                <!-- Número -->
+                                <span class="relative text-xl font-extrabold text-black tracking-tight">
+                                    {{$premio->cantidad}}
+                                </span>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <div class="p-6 space-y-4">
@@ -118,21 +138,9 @@
                         <h3 class="font-headline font-black text-xl uppercase tracking-tighter leading-tight">{{$premio->name}}</h3>
                         <!-- <span class="text-secondary font-black text-lg font-headline tracking-tighter">{{$premio->cantidad}} Und</span> -->
                     </div>
-                    <!-- <div class="space-y-2">
-                        <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
-                            <span>Progreso</span>
-                            <span class="text-primary">85%</span>
-                        </div>
-                        <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
-                            <div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(144,171,255,0.5)]" style="width: 85%"></div>
-                        </div>
-                    </div> -->
-                    <!-- <button class="w-full py-3 bg-surface-bright text-on-surface font-black uppercase text-xs tracking-widest rounded-full hover:bg-primary hover:text-on-primary-fixed transition-all">Participar</button> -->
                 </div>
             </div>
             @endforeach
-            <!-- end cards -->
-
         </div>
     </section>
 
