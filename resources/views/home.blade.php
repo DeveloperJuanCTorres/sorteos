@@ -108,28 +108,40 @@
                 <div class="relative h-48">
                     <img alt="Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="insane gaming setup with three monitors, vertical rgb strips, high end pc case, and ergonomic chair in a dark room"
                         src="{{asset('storage/' . $premio->image)}}" />
-                    <div class="absolute top-3 right-3 z-20">
-                        <div class="relative w-14 h-14">
+                    <div class="absolute top-3 right-3 z-30 perspective-[800px]">
+                        <div class="group relative w-16 h-16 transition-transform duration-500 
+                                    [transform-style:preserve-3d] 
+                                    group-hover:rotate-x-12 group-hover:-rotate-y-12 group-hover:scale-110">
 
-                            <!-- Glow -->
-                            <div class="absolute inset-0 rounded-full bg-yellow-400 blur-xl opacity-70"></div>
+                            <!-- Glow externo -->
+                            <div class="absolute inset-0 rounded-full bg-yellow-400/70 blur-xl opacity-70 group-hover:opacity-100 transition"></div>
 
                             <!-- Ficha -->
                             <div class="relative w-full h-full rounded-full 
                                         bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600
                                         border-[3px] border-white/30
-                                        shadow-[0_0_25px_rgba(255,215,0,0.9),inset_0_0_10px_rgba(255,255,255,0.4)]
+                                        shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_4px_10px_rgba(255,255,255,0.5),inset_0_-6px_12px_rgba(0,0,0,0.4)]
                                         flex items-center justify-center">
+
+                                <!-- Highlight superior (brillo metálico) -->
+                                <div class="absolute top-1 left-1/2 -translate-x-1/2 w-10 h-3 
+                                            bg-white/60 blur-sm rounded-full opacity-70"></div>
 
                                 <!-- Anillo interno -->
                                 <div class="absolute inset-2 rounded-full border-2 border-dashed border-black/20"></div>
 
-                                <!-- Número -->
-                                <span class="relative text-xl font-extrabold text-black tracking-tight">
-                                    {{$premio->cantidad}}
-                                </span>
-                            </div>
+                                <!-- Núcleo -->
+                                <div class="absolute inset-4 rounded-full 
+                                            bg-gradient-to-br from-yellow-200 to-yellow-500 
+                                            shadow-inner flex items-center justify-center">
 
+                                    <!-- Número -->
+                                    <span class="text-2xl font-extrabold text-black tracking-tight drop-shadow">
+                                        {{$premio->cantidad}}
+                                    </span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
