@@ -48,7 +48,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none"></div>
         <div class="relative z-10 flex items-center gap-5">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/30 shadow-[0_0_20px_rgba(37,99,235,0.2)]">
-                <span class="material-symbols-outlined text-primary text-4xl animate-pulse">alarm</span>
+                <i class="fa-solid fa-clock text-primary text-4xl animate-pulse"></i>
             </div>
             <div>
                 <h2 class="text-2xl md:text-3xl font-headline font-black uppercase tracking-tighter leading-none">
@@ -95,61 +95,36 @@
     <section>
         <div class="flex justify-between items-end mb-8">
             @if($sorteo)
-            <div style="z-index: 10;">                
-                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios <span class="text-primary-container">{{$sorteo->name}}</span></h2>                
+            <div style="z-index: 10;">
+                <h2 class="text-3xl font-headline font-black uppercase tracking-tighter">Premios <span class="text-primary-container">{{$sorteo->name}}</span></h2>
                 <p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-black">Tu próxima victoria está a un ticket de distancia</p>
-            </div>            
+            </div>
             <button class="text-primary font-black uppercase text-sm tracking-widest hover:underline transition-all" style="z-index: 10;">Ver todos</button>
             @endif
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($premios as $premio)
-            <div class="bg-surface-container-highest rounded-[1.5rem] overflow-hidden group border border-outline-variant/10">
-                <div class="relative h-48">
-                    <img alt="Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="insane gaming setup with three monitors, vertical rgb strips, high end pc case, and ergonomic chair in a dark room"
-                        src="{{asset('storage/' . $premio->image)}}" />
-                    <div class="absolute top-3 right-3 z-30 perspective-[800px]">
-                        <div class="group relative w-16 h-16 transition-transform duration-500 
-                                    [transform-style:preserve-3d] 
-                                    group-hover:rotate-x-12 group-hover:-rotate-y-12 group-hover:scale-110">
-
-                            <!-- Glow externo -->
-                            <div class="absolute inset-0 rounded-full bg-yellow-400/70 blur-xl opacity-70 group-hover:opacity-100 transition"></div>
-
-                            <!-- Ficha -->
-                            <div class="relative w-full h-full rounded-full 
-                                        bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600
-                                        border-[3px] border-white/30
-                                        shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_4px_10px_rgba(255,255,255,0.5),inset_0_-6px_12px_rgba(0,0,0,0.4)]
-                                        flex items-center justify-center">
-
-                                <!-- Highlight superior (brillo metálico) -->
-                                <div class="absolute top-1 left-1/2 -translate-x-1/2 w-10 h-3 
-                                            bg-white/60 blur-sm rounded-full opacity-70"></div>
-
-                                <!-- Anillo interno -->
-                                <div class="absolute inset-2 rounded-full border-2 border-dashed border-black/20"></div>
-
-                                <!-- Núcleo -->
-                                <div class="absolute inset-4 rounded-full 
-                                            bg-gradient-to-br from-yellow-200 to-yellow-500 
-                                            shadow-inner flex items-center justify-center">
-
-                                    <!-- Número -->
-                                    <span class="text-2xl font-extrabold text-black tracking-tight drop-shadow">
-                                        {{$premio->cantidad}}
-                                    </span>
-                                </div>
-
+            <div class="group relative bg-surface-container-highest rounded-[2rem] overflow-hidden transition-all duration-500 hover:translate-y-[-8px]">
+                <div class="relative h-48 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                            src="{{asset ('storage/' . $premio->image)}}"/>
+                    <!-- Hexagon Badge -->
+                    <div class="absolute top-2 right-4 flex flex-col items-center z-20 scale-90 origin-top-right">
+                        <div class="relative flex flex-col items-center">
+                            <!-- 3D Crown Asset Placeholder (Styled CSS) -->
+                            <div class="relative z-20 mb-[-12px] drop-shadow-xl">
+                                <i class="fa-solid fa-crown text-secondary text-4xl"></i>
+                            </div>
+                            <!-- 3D Hexagon -->
+                            <div class="hexagon-flat w-20 h-24 bg-[#121212] flex items-center justify-center relative border-2 border-secondary/50 shadow-[0_0_20px_rgba(248,160,16,0.3)]">
+                                <div class="absolute inset-0 border-4 border-secondary/20"></div>
+                                <span class="font-headline font-black text-secondary text-3xl tracking-tighter relative z-10">X{{ $premio->cantidad }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="p-6 space-y-4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-headline font-black text-xl uppercase tracking-tighter leading-tight">{{$premio->name}}</h3>
-                        <!-- <span class="text-secondary font-black text-lg font-headline tracking-tighter">{{$premio->cantidad}} Und</span> -->
-                    </div>
+                    <h3 class="font-headline font-black text-xl uppercase tracking-tighter leading-tight">{{ $premio->name }}</h3>
                 </div>
             </div>
             @endforeach
@@ -495,7 +470,7 @@
     // Fecha del sorteo desde Laravel
 
 
-    let fechaSorteo = @json($sorteo && $sorteo->date ? \Carbon\Carbon::parse($sorteo->date)->format('Y-m-d H:i:s') : null);
+    let fechaSorteo = @json($sorteo && $sorteo -> date ? \Carbon\Carbon::parse($sorteo -> date) -> format('Y-m-d H:i:s') : null);
 
     fechaSorteo = fechaSorteo ? new Date(fechaSorteo).getTime() : null;
 
@@ -778,7 +753,7 @@
 
 <script>
     const precio = {{ $sorteo->price ?? 0 }};
-    
+
     const inputCantidad = document.getElementById('cantidadTickets');
     const total = document.getElementById('totalPagar');
 
@@ -841,3 +816,6 @@
 </script>
 
 @endsection
+
+
+

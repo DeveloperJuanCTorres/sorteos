@@ -3,7 +3,7 @@
     <a href="{{ route('home') }}"  class="flex flex-col items-center justify-center py-2 px-4 transition-all duration-150
         {{ request()->routeIs('home') ? 'text-[#90abff] bg-[#90abff]/10 rounded-2xl shadow-[0_0_15px_rgba(144,171,255,0.2)]' : 'text-slate-500 hover:text-[#9bffce]' }}">
         <!-- <div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150"> -->
-            <span class="material-symbols-outlined mb-1">home</span>
+            <i class="fa-solid fa-house mb-1"></i>
             <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Inicio</span>
         <!-- </div> -->
     </a>
@@ -11,7 +11,7 @@
     <a href="{{ route('tickets') }}"  class="flex flex-col items-center justify-center py-2 px-4 transition-all duration-150
         {{ request()->routeIs('tickets') || request()->routeIs('tickets.*') ? 'text-[#90abff] bg-[#90abff]/10 rounded-2xl shadow-[0_0_15px_rgba(144,171,255,0.2)]' : 'text-slate-500 hover:text-[#9bffce]' }}">
         <!-- <div class="flex flex-col items-center justify-center text-[#90abff] bg-[#90abff]/10 rounded-2xl py-2 px-4 shadow-[0_0_15px_rgba(144,171,255,0.2)] active:scale-90 transition-transform duration-150"> -->
-            <span class="material-symbols-outlined mb-1">confirmation_number</span>
+            <i class="fa-solid fa-ticket-alt mb-1"></i>
             <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Tickets</span>
         <!-- </div> -->
     </a>
@@ -19,7 +19,7 @@
     <a href="{{ route('ganadores') }}"  class="flex flex-col items-center justify-center py-2 px-4 transition-all duration-150
         {{ request()->routeIs('ganadores') || request()->routeIs('ganadores.*') ? 'text-[#90abff] bg-[#90abff]/10 rounded-2xl shadow-[0_0_15px_rgba(144,171,255,0.2)]' : 'text-slate-500 hover:text-[#9bffce]' }}">
         <!-- <div class="flex flex-col items-center justify-center text-slate-500 py-2 px-4 hover:text-[#9bffce] transition-colors cursor-pointer active:scale-90 transition-transform duration-150"> -->
-        <span class="material-symbols-outlined mb-1">emoji_events</span>
+        <i class="fa-solid fa-trophy mb-1"></i>
         <span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Ganadores</span>
         <!-- </div> -->
     </a>

@@ -5,19 +5,27 @@
 } */
 
 body {
-      min-height: max(884px, 100dvh);
-    }
+    min-height: max(884px, 100dvh);
+}
 
 .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
 
-        .top-20{
-            margin-bottom: 100px;
-        }
+.top-20 {
+    margin-bottom: 100px;
+}
+
 .gold {
     color: #FFD700;
 }
@@ -102,7 +110,7 @@ body {
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-            mask-composite: exclude;
+    mask-composite: exclude;
 }
 
 .countdown-card:hover {
@@ -167,7 +175,7 @@ body {
 
 .card-sorteo:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .card-sorteo img {
@@ -239,7 +247,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(255,215,0,0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 .product-card img {
@@ -260,7 +268,8 @@ body {
 }
 
 .form-control::placeholder {
-    color: rgba(255, 215, 0, 0.7); /* dorado suave */
+    color: rgba(255, 215, 0, 0.7);
+    /* dorado suave */
 }
 
 .kpi-section {
@@ -344,7 +353,7 @@ body {
 
 /* EFECTO HOVER GENERAL */
 .nav-link-pro:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* MOBILE FULL WIDTH */
@@ -459,12 +468,12 @@ body {
 }
 
 .form-control::placeholder {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form-control,
 .form-select {
-    background-color: rgba(255,255,255,0.05) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
     border-radius: 10px;
 }
 
@@ -478,24 +487,22 @@ body {
     border-radius: 16px;
 
     /* 🎟️ Forma de ticket real */
-    clip-path: polygon(
-        0% 0%, 
-        100% 0%, 
-        100% 35%, 
-        95% 40%, 
-        100% 45%, 
-        100% 55%, 
-        95% 60%, 
-        100% 65%, 
-        100% 100%, 
-        0% 100%, 
-        0% 65%, 
-        5% 60%, 
-        0% 55%, 
-        0% 45%, 
-        5% 40%, 
-        0% 35%
-    );
+    clip-path: polygon(0% 0%,
+            100% 0%,
+            100% 35%,
+            95% 40%,
+            100% 45%,
+            100% 55%,
+            95% 60%,
+            100% 65%,
+            100% 100%,
+            0% 100%,
+            0% 65%,
+            5% 60%,
+            0% 55%,
+            0% 45%,
+            5% 40%,
+            0% 35%);
 }
 
 
@@ -504,7 +511,7 @@ body {
 
 /* Base */
 .btn-floating:hover img {
-  margin-bottom: -3px
+    margin-bottom: -3px
 }
 
 .btn-floating {
@@ -558,9 +565,45 @@ body {
     background-color: #1f7a12
 }
 
+.hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.text-glow-blue {
+    text-shadow: 0 0 10px rgba(144, 171, 255, 0.6);
+}
+
+.badge-glow {
+    filter: drop-shadow(0 0 8px rgba(248, 160, 16, 0.4));
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.text-glow-blue {
+    text-shadow: 0 0 10px rgba(144, 171, 255, 0.6);
+}
+
+.badge-glow {
+    filter: drop-shadow(0 0 8px rgba(248, 160, 16, 0.4));
+}
+
+.hexagon-flat {
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+}
+
 /* Fin WhatsApp */
 
 
 /* .bg-secondary {
     background-color: rgb(250, 130, 20) !important;
 } */
+
+.text-secondary{
+    color: rgb(250, 130, 20) !important;
+}
