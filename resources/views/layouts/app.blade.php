@@ -95,6 +95,17 @@
         $version = '1993.4.8';
     ?>
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logos/oxa_16X16.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logos/oxa_32X32.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('logos/oxa_48X48.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('logos/oxa_64X64.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('logos/oxa_96X96.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="128x128" href="{{ asset('logos/oxa_128X128.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('logos/oxa_192X192.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="256x256" href="{{ asset('logos/oxa_256X256.png') }}?v=<?php echo $version ?>">
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('logos/oxa_512X512.png') }}?v=<?php echo $version ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logos/oxa_180X180.png') }}?v=<?php echo $version ?>">
+
     <!-- Google Fonts -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
 

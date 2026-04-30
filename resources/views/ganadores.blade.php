@@ -85,7 +85,7 @@
                     <div class="flex flex-wrap gap-2">
                         @foreach($winner->tickets as $ticket)
                             <span class="px-2 py-1 text-xs bg-primary/20 text-primary rounded-lg">
-                                {{ $ticket->nombres }} - {{ $ticket->dni }}
+                                {{ $ticket->dni }} - {{ $ticket->nombres . ' ' . $ticket->apellidos }} - {{ $ticket->departamento }}
                             </span>
                         @endforeach
                     </div>
