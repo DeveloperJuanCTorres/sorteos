@@ -104,27 +104,48 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($premios as $premio)
-            <div class="group relative bg-surface-container-highest rounded-[2rem] overflow-hidden transition-all duration-500 hover:translate-y-[-8px]">
-                <div class="relative h-72 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                            src="{{asset ('storage/' . $premio->image)}}"/>
-                    <!-- Hexagon Badge -->
-                    <div class="absolute top-2 right-4 flex flex-col items-center z-20 scale-90 origin-top-right">
-                        <div class="relative flex flex-col items-center">
-                            <!-- 3D Crown Asset Placeholder (Styled CSS) -->
-                            <div class="relative z-20 mb-[-12px] drop-shadow-xl">
-                                <i class="fa-solid fa-crown text-secondary text-4xl"></i>
-                            </div>
-                            <!-- 3D Hexagon -->
-                            <div class="hexagon-flat w-20 h-24 bg-[#121212] flex items-center justify-center relative border-2 border-secondary/50 shadow-[0_0_20px_rgba(248,160,16,0.3)]">
-                                <div class="absolute inset-0 border-4 border-secondary/20"></div>
-                                <span class="font-headline font-black text-secondary text-3xl tracking-tighter relative z-10">X{{ $premio->cantidad }}</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="group relative bg-surface-container-highest rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 border border-white/5 hover:border-secondary/30">
+
+                <!-- Imagen limpia -->
+                <div class="relative h-48 overflow-hidden">
+                    <img 
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                        src="{{ asset('storage/' . $premio->image) }}"
+                    />
+
+                    <!-- Glow overlay sutil -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80"></div>
                 </div>
+
+                <!-- Contenido -->
                 <div class="p-6 space-y-4">
-                    <h3 class="font-headline font-black text-xl uppercase tracking-tighter leading-tight">{{ $premio->name }}</h3>
+
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+
+                        <!-- Nombre -->
+                        <h3 class="font-headline font-black text-xl uppercase tracking-tight leading-tight">
+                            {{ $premio->name }}
+                        </h3>
+
+                        <!-- Cantidad estilo badge PRO -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md">
+                            <i class="fa-solid fa-crown text-[10px] uppercase tracking-widest opacity-80"></i>
+                            <span class="font-mono text-sm font-semibold">
+                                X{{ $premio->cantidad }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Línea decorativa -->
+                    <!-- <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div> -->
+
+                    <!-- Extra (opcional: más pro aún) -->
+                    <!-- <p class="text-xs text-center text-zinc-400 tracking-wide">
+                        Premio disponible en el sorteo
+                    </p> -->
+
                 </div>
             </div>
             @endforeach
@@ -169,6 +190,15 @@
                 <div class="w-16 h-16 bg-surface-bright rounded-2xl flex items-center justify-center font-headline font-black text-3xl text-secondary mb-6 shadow-[0_0_30px_rgba(248,160,16,0.3)]">3</div>
                 <h3 class="font-headline font-black uppercase tracking-widest mb-2">¡El ganador puedes ser tú!</h3>
                 <p class="text-on-surface-variant text-sm leading-relaxed max-w-[200px]">Si tu numero es elegido, tu te llevas el premio. Así de siemple.</p>
+            </div>
+
+            <div class="col-span-full flex justify-center mt-8">
+                <button 
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalRegistro"
+                    class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed px-10 py-3 rounded-full font-headline font-black text-xl uppercase tracking-tighter shadow-[0_0_40px_rgba(144,171,255,0.4)] hover:shadow-[0_0_60px_rgba(144,171,255,0.6)] transition-all active:scale-95 duration-200">
+                    Participar Ahora
+                </button>
             </div>
         </div>
     </section>
