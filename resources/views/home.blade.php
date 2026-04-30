@@ -241,7 +241,7 @@
                                 <option value="{{ $item->id }}"
                                     {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
                                     {{ $item->name }} -
-                                    {{ \Carbon\Carbon::parse($item->fecha_sorteo)->format('d/m/Y') }}
+                                    {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
                                 </option>
                                 @endforeach
 
