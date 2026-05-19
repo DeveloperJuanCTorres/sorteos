@@ -211,121 +211,197 @@
 @if($sorteo)
 <div class="modal fade" id="modalRegistro" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg" style="background-color: rgb(9 19 40 / var(--tw-bg-opacity, 1)); border-radius: 16px;">
+        <div class="modal-content border-0 shadow-lg bg-white text-dark"
+            style="border-radius: 16px;">
+
+            <style>
+                #modalRegistro .form-control,
+                #modalRegistro .form-select {
+                    height: 48px;
+                    border-radius: 12px;
+                }
+
+                #modalRegistro .form-control:focus,
+                #modalRegistro .form-select:focus {
+                    border-color: #0d6efd;
+                    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, .15);
+                }
+
+                #dropZone {
+                    transition: .3s ease;
+                }
+
+                #dropZone:hover {
+                    border-color: #0d6efd !important;
+                    background: #f8f9ff !important;
+                }
+            </style>
 
             <!-- Header -->
             <div class="modal-header border-0 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
-                    <h2 class="text-primary">Formulario de registro de ticket</h2>
+                    <h2 class="text-dark fw-bold mb-0">
+                        Formulario de registro de ticket
+                    </h2>
                 </div>
 
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Body -->
-            <div class="modal-body text-white">
+            <div class="modal-body text-dark">
 
                 <form id="formRegistro" enctype="multipart/form-data">
 
-                    <div class="mb-3">
-
-                    </div>
-
                     <div class="row g-3">
+
+                        <!-- Sorteo -->
                         <div class="col-md-6">
-                            <label class="form-label text-white">Sorteo:</label>
+                            <label class="form-label text-dark fw-semibold">
+                                Sorteo
+                            </label>
+
                             <select name="raffle_id"
-                                class="form-select bg-dark text-white border-0" required>
+                                class="form-select bg-light text-dark border"
+                                required>
 
                                 @foreach($sorteos as $item)
                                 <option value="{{ $item->id }}"
                                     {{ $sorteo && $item->id == $sorteo->id ? 'selected' : '' }}>
+
                                     {{ $item->name }} -
                                     {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
+
                                 </option>
                                 @endforeach
 
                             </select>
                         </div>
+
                         <!-- Tipo Documento -->
                         <div class="col-md-6">
-                            <label class="form-label">Tipo de Documento</label>
-                            <select class="form-select bg-dark text-white border-0" name="tipo_documento" required>
-                                <option class="text-black" value="dni">DNI</option>
-                                <option class="text-black" value="ce">Carnet de Extranjería</option>
-                                <option class="text-black" value="pasaporte">Pasaporte</option>
+                            <label class="form-label text-dark fw-semibold">
+                                Tipo de Documento
+                            </label>
+
+                            <select class="form-select bg-light text-dark border"
+                                name="tipo_documento"
+                                required>
+
+                                <option value="dni">DNI</option>
+                                <option value="ce">Carnet de Extranjería</option>
+                                <option value="pasaporte">Pasaporte</option>
+
                             </select>
                         </div>
 
                         <!-- Número Documento -->
                         <div class="col-md-6">
-                            <label class="form-label">Número de Documento</label>
-                            <input type="text" class="form-control bg-dark text-white border-0" name="numero_documento" required>
+                            <label class="form-label text-dark fw-semibold">
+                                Número de Documento
+                            </label>
+
+                            <input type="text"
+                                class="form-control bg-light text-dark border"
+                                name="numero_documento"
+                                required>
                         </div>
 
                         <!-- Nombres -->
                         <div class="col-md-6">
-                            <label class="form-label">Nombres</label>
-                            <input type="text" class="form-control bg-dark text-white border-0" name="nombres" required>
+                            <label class="form-label text-dark fw-semibold">
+                                Nombres
+                            </label>
+
+                            <input type="text"
+                                class="form-control bg-light text-dark border"
+                                name="nombres"
+                                required>
                         </div>
 
                         <!-- Apellidos -->
                         <div class="col-md-6">
-                            <label class="form-label">Apellidos</label>
-                            <input type="text" class="form-control bg-dark text-white border-0" name="apellidos" required>
+                            <label class="form-label text-dark fw-semibold">
+                                Apellidos
+                            </label>
+
+                            <input type="text"
+                                class="form-control bg-light text-dark border"
+                                name="apellidos"
+                                required>
                         </div>
 
+                        <!-- Departamento -->
                         <div class="col-md-6">
-                            <label class="form-label">Departamento</label>
-                            <select class="form-select bg-dark text-white border-0" name="departamento" required>
-                                <option class="text-black" value="">Seleccionar</option>
-                                <option class="text-black">Amazonas</option>
-                                <option class="text-black">Áncash</option>
-                                <option class="text-black">Apurímac</option>
-                                <option class="text-black">Arequipa</option>
-                                <option class="text-black">Ayacucho</option>
-                                <option class="text-black">Cajamarca</option>
-                                <option class="text-black">Callao</option>
-                                <option class="text-black">Cusco</option>
-                                <option class="text-black">Huancavelica</option>
-                                <option class="text-black">Huánuco</option>
-                                <option class="text-black">Ica</option>
-                                <option class="text-black">Junín</option>
-                                <option class="text-black">La Libertad</option>
-                                <option class="text-black">Lambayeque</option>
-                                <option class="text-black">Lima</option>
-                                <option class="text-black">Loreto</option>
-                                <option class="text-black">Madre de Dios</option>
-                                <option class="text-black">Moquegua</option>
-                                <option class="text-black">Pasco</option>
-                                <option class="text-black">Piura</option>
-                                <option class="text-black">Puno</option>
-                                <option class="text-black">San Martín</option>
-                                <option class="text-black">Tacna</option>
-                                <option class="text-black">Tumbes</option>
-                                <option class="text-black">Ucayali</option>
+                            <label class="form-label text-dark fw-semibold">
+                                Departamento
+                            </label>
+
+                            <select class="form-select bg-light text-dark border"
+                                name="departamento"
+                                required>
+
+                                <option value="">Seleccionar</option>
+                                <option>Amazonas</option>
+                                <option>Áncash</option>
+                                <option>Apurímac</option>
+                                <option>Arequipa</option>
+                                <option>Ayacucho</option>
+                                <option>Cajamarca</option>
+                                <option>Callao</option>
+                                <option>Cusco</option>
+                                <option>Huancavelica</option>
+                                <option>Huánuco</option>
+                                <option>Ica</option>
+                                <option>Junín</option>
+                                <option>La Libertad</option>
+                                <option>Lambayeque</option>
+                                <option>Lima</option>
+                                <option>Loreto</option>
+                                <option>Madre de Dios</option>
+                                <option>Moquegua</option>
+                                <option>Pasco</option>
+                                <option>Piura</option>
+                                <option>Puno</option>
+                                <option>San Martín</option>
+                                <option>Tacna</option>
+                                <option>Tumbes</option>
+                                <option>Ucayali</option>
+
                             </select>
                         </div>
 
-                        <!-- Teléfono -->
+                        <!-- WhatsApp -->
                         <div class="col-md-6">
-                            <label class="form-label">WhatsApp</label>
-                            <input type="text" class="form-control bg-dark text-white border-0" name="telefono" required>
+                            <label class="form-label text-dark fw-semibold">
+                                WhatsApp
+                            </label>
+
+                            <input type="text"
+                                class="form-control bg-light text-dark border"
+                                name="telefono"
+                                required>
                         </div>
 
-                        <!-- Cantidad de Tickets -->
+                        <!-- Cantidad -->
                         <div class="col-md-6">
-                            <label class="form-label">Cantidad de Tickets</label>
+                            <label class="form-label text-dark fw-semibold">
+                                Cantidad de Tickets
+                            </label>
 
-                            <div class="d-flex align-items-center rounded-4 px-3"
-                                style="height: 48px;">
+                            <div class="d-flex align-items-center justify-content-between rounded-4 px-3"
+                                style="height: 48px; background:#f1f3f5;">
 
-                                <button type="button" class="btn btn-sm text-white" id="btnMenos">
+                                <button type="button"
+                                    class="btn btn-sm btn-light border"
+                                    id="btnMenos">
                                     ➖
                                 </button>
 
                                 <input type="number"
-                                    class="form-control bg-transparent border-0 text-white text-center fw-bold"
+                                    class="form-control bg-white border-0 text-dark text-center fw-bold"
                                     name="cantidad"
                                     id="cantidadTickets"
                                     value="1"
@@ -333,7 +409,9 @@
                                     readonly
                                     style="max-width: 80px;">
 
-                                <button type="button" class="btn btn-sm text-white" id="btnMas">
+                                <button type="button"
+                                    class="btn btn-sm btn-light border"
+                                    id="btnMas">
                                     ➕
                                 </button>
 
@@ -343,113 +421,182 @@
                     </div>
 
                     <!-- SECCIÓN PAGO -->
-                    <div class="mt-4 p-3 rounded" style="background-color: rgba(255,255,255,0.05);">
-
+                    <div class="mt-4 p-4 rounded-4"
+                        style="background-color: #f8f9fa;">
 
                         <div class="row align-items-center">
 
-                            <!-- QR + PRECIO -->
+                            <!-- QR -->
                             <div class="col-md-5 text-center">
-                                <h6 class="fw-bold mb-3">Pago por Yape</h6>
+
+                                <h6 class="fw-bold mb-3">
+                                    Pago por Yape
+                                </h6>
 
                                 <img src="{{ asset('img/yape-qr1.jpeg') }}"
                                     alt="QR Yape"
                                     class="img-fluid rounded shadow mb-3 m-auto"
                                     style="max-width: 200px;">
 
-                                <p class="mt-2 small">Escanea para pagar</p>
-                                <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
-                                    style="background-color: rgba(255, 255, 255, 0.05)">
+                                <p class="mt-2 small text-muted">
+                                    Escanea para pagar
+                                </p>
 
-                                    <div class="fw-bold text-white" id="yapeNumero"
+                                <div class="p-2 rounded-4 d-flex align-items-center justify-content-between"
+                                    style="background-color: #ffffff; border:1px solid #dee2e6;">
+
+                                    <div class="fw-bold text-dark"
+                                        id="yapeNumero"
                                         data-numero="{{ $empresa->whatsapp }}">
+
                                         {{ $empresa->whatsapp }}
+
                                     </div>
 
-                                    <button type="button" id="btnCopiarYape"
-                                        class="btn btn-light btn-sm rounded-pill px-3 fw-bold">
-                                        Copiar📋
+                                    <button type="button"
+                                        id="btnCopiarYape"
+                                        class="btn btn-primary btn-sm rounded-pill px-3 fw-bold">
+
+                                        Copiar 📋
+
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Upload -->
+                            <!-- Datos pago -->
                             <div class="col-md-7">
+
                                 <div class="row">
+
+                                    <!-- Precio -->
                                     <div class="col-md-6">
-                                        <!-- PRECIO -->
-                                        <div class="p-3 rounded-4 mb-2"
+                                        <div class="p-3 rounded-4 mb-3"
                                             style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
 
-                                            <div class="small text-white">Precio por Ticket</div>
+                                            <div class="small text-white">
+                                                Precio por Ticket
+                                            </div>
+
                                             <div class="fw-bold fs-4 text-white">
                                                 S/ {{ number_format($sorteo->price, 2) }}
                                             </div>
+
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <!-- TOTAL -->
-                                        <div class="p-3 rounded-4 mb-2"
-                                            style="background-color: rgba(255,255,255,0.08);">
 
-                                            <div class="small text-white">Total a pagar</div>
-                                            <div class="fw-bold fs-4 text-success" id="totalPagar">
+                                    <!-- Total -->
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded-4 mb-3"
+                                            style="background-color: #ffffff; border:1px solid #dee2e6;">
+
+                                            <div class="small text-muted">
+                                                Total a pagar
+                                            </div>
+
+                                            <div class="fw-bold fs-4 text-success"
+                                                id="totalPagar">
+
                                                 S/ {{ number_format($sorteo->price, 2) }}
+
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                                <div class="col-md-7 m-auto text-center">
-                                    <label class="form-label">Adjuntar comprobante</label>
+                                <!-- Upload -->
+                                <div class="col-md-8 m-auto text-center">
 
-                                    <!-- Contenedor -->
+                                    <label class="form-label text-dark fw-semibold">
+                                        Adjuntar comprobante
+                                    </label>
+
                                     <div id="dropZone"
                                         class="p-4 text-center rounded-4 position-relative"
-                                        style="background-color: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s;">
+                                        style="background-color: #ffffff; border: 2px dashed #ced4da; cursor: pointer;">
 
-                                        <!-- Icono -->
-                                        <div class="mb-2" style="font-size: 32px;">📤</div>
+                                        <div class="mb-2" style="font-size: 32px;">
+                                            📤
+                                        </div>
 
-                                        <!-- Texto -->
-                                        <div class="fw-bold">Sube tu comprobante</div>
-                                        <div class="small text-white-50">Arrastra o haz clic aquí</div>
+                                        <div class="fw-bold text-dark">
+                                            Sube tu comprobante
+                                        </div>
 
-                                        <!-- Nombre archivo -->
-                                        <div id="fileName" class="mt-2 text-success small"></div>
+                                        <div class="small text-muted">
+                                            Arrastra o haz clic aquí
+                                        </div>
 
-                                        <!-- Input real oculto -->
+                                        <div id="fileName"
+                                            class="mt-2 text-success small fw-semibold">
+                                        </div>
+
                                         <input type="file"
                                             id="inputComprobante"
                                             name="comprobante"
                                             accept="image/*,.pdf"
                                             class="position-absolute top-0 start-0 w-100 h-100 opacity-0"
                                             required>
-                                    </div>
 
-                                    <!-- Preview -->
-                                    <!-- <div id="previewContainer" class="mt-3 text-center d-none">
-                                        <img id="previewImg" class="img-fluid rounded shadow" style="max-height: 150px;">
-                                    </div> -->
+                                    </div>
 
                                 </div>
 
-
-                                <!-- <label class="form-label">Adjuntar comprobante</label>
-                                <input type="file" class="form-control bg-dark text-white border-0" name="comprobante" accept="image/*,.pdf" required> -->
                             </div>
 
                         </div>
                     </div>
 
+                    <!-- Términos y condiciones -->
+                    <div class="mt-4">
+
+                        <div class="form-check d-flex align-items-start gap-2">
+
+                            <input class="form-check-input mt-1"
+                                type="checkbox"
+                                checked
+                                disabled
+                                id="terminosCheck">
+
+                            <label class="form-check-label small text-muted"
+                                for="terminosCheck">
+
+                                Al enviar este registro, aceptas automáticamente los
+                                <a href="{{ route('terminos') }}"
+                                    target="_blank"
+                                    class="text-primary fw-semibold text-decoration-none">
+
+                                    términos y condiciones
+
+                                </a>
+                                y el tratamiento de tus datos personales para la participación
+                                en el sorteo.
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
                     <!-- Footer -->
                     <div class="mt-4 text-end">
-                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
+
+                        <button type="button"
+                            class="btn btn-light border me-2"
+                            data-bs-dismiss="modal">
+
                             Cancelar
+
                         </button>
-                        <button type="submit" class="btn btn-primary">
+
+                        <button type="submit"
+                            class="btn btn-primary px-4"
+                            id="btnEnviarRegistro">
+
                             Enviar Registro
+
                         </button>
+
                     </div>
 
                 </form>
@@ -466,6 +613,8 @@
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
@@ -561,7 +710,7 @@
     actualizarContador();
 </script>
 
-<script>
+<!-- <script>
     document.getElementById('formRegistro').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -585,6 +734,94 @@
                 }
             })
             .catch(err => console.error(err));
+    });
+</script> -->
+
+<script>
+    const formRegistro = document.getElementById('formRegistro');
+    const btnEnviar = document.getElementById('btnEnviarRegistro');
+
+    formRegistro.addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        // Evitar múltiples clicks
+        btnEnviar.disabled = true;
+
+        // Guardar texto original
+        const textoOriginal = btnEnviar.innerHTML;
+
+        // Mostrar loading
+        btnEnviar.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Registrando...
+        `;
+
+        let formData = new FormData(this);
+
+        fetch("{{ route('tickets.store') }}", {
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.success) {
+
+                    // Toast éxito
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+
+                    // Reset form
+                    formRegistro.reset();
+
+                    // Cerrar modal
+                    let modal = bootstrap.Modal.getInstance(
+                        document.getElementById('modalRegistro')
+                    );
+
+                    modal.hide();
+
+                } else {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message || 'Ocurrió un error'
+                    });
+
+                }
+
+            })
+            .catch(err => {
+
+                console.error(err);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error del servidor',
+                    text: 'Ocurrió un problema al registrar el ticket'
+                });
+
+            })
+            .finally(() => {
+
+                // Restaurar botón
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = textoOriginal;
+
+            });
+
     });
 </script>
 

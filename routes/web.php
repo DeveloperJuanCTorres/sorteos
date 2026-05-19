@@ -24,6 +24,7 @@ Auth::routes([
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tickets', [App\Http\Controllers\HomeController::class, 'tickets'])->name('tickets');
 Route::get('/ganadores', [App\Http\Controllers\HomeController::class, 'ganadores'])->name('ganadores');
+Route::get('/terminos-y-condiciones', [App\Http\Controllers\HomeController::class, 'terminos'])->name('terminos');
 
 Route::get('/tickets/list', [TicketController::class, 'index'])->name('tickets.list');
 Route::get('/tickets/buscar', [TicketController::class, 'buscar'])->name('tickets.buscar');

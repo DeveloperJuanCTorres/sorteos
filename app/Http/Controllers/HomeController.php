@@ -66,4 +66,10 @@ class HomeController extends Controller
         
         return view('ganadores', compact('empresa', 'sorteos', 'winners'));
     }
+
+    public function terminos()
+    {
+        $empresa = Company::first();
+        return view('terminos', compact('empresa'));
+    }
 }
