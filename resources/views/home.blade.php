@@ -534,7 +534,7 @@
                                         <input type="file"
                                             id="inputComprobante"
                                             name="comprobante"
-                                            accept="image/*,.pdf"
+                                            accept="image/jpeg,image/png,image/webp,.pdf""
                                             class="position-absolute top-0 start-0 w-100 h-100 opacity-0"
                                             required>
 
