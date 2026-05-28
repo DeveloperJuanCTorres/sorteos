@@ -1082,6 +1082,47 @@
     });
 </script>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Abrir modal automáticamente
+        if (urlParams.get('openModal') === '1') {
+
+            const modalElement = document.getElementById('modalRegistro');
+
+            if (modalElement) {
+
+                const modal = new bootstrap.Modal(modalElement);
+
+                modal.show();
+
+                // Seleccionar sorteo automáticamente
+                const sorteoId = urlParams.get('sorteo');
+
+                if (sorteoId) {
+                    document.querySelector('[name="raffle_id"]').value = sorteoId;
+                }
+
+                // Cantidad tickets
+                const cantidad = urlParams.get('cantidad');
+
+                if (cantidad) {
+
+                    const inputCantidad = document.getElementById('cantidadTickets');
+
+                    inputCantidad.value = cantidad;
+
+                    calcularTotal();
+                }
+            }
+        }
+
+    });
+</script>
+
 @endsection
 
 

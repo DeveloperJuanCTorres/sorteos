@@ -31,6 +31,8 @@ Route::get('/tickets/buscar', [TicketController::class, 'buscar'])->name('ticket
 Route::post('/tickets/registrar', [TicketController::class, 'store'])->name('tickets.store');
 
 
+
+
 Route::get('/fix-config', function () {
 
     try {
