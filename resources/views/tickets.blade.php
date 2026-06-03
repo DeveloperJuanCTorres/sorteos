@@ -31,7 +31,15 @@
 
     @if(isset($tickets) && count($tickets) > 0)
     <!-- Stats Bento Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+        <div class="bg-surface-container p-6 rounded-xl flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+            <span class="text-on-surface-variant font-label text-xs uppercase tracking-widest">
+                Activos
+            </span>
+            <span class="font-headline text-4xl text-green-400">
+                {{ $activos->sum('cantidad') }}
+            </span>
+        </div>
         <div class="bg-surface-container-highest p-6 rounded-xl flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
             <span class="text-on-surface-variant font-label text-xs uppercase tracking-widest">Aprobados</span>
             <span class="font-headline text-4xl text-primary">{{ $aprobados->sum('cantidad') }}</span>
@@ -55,6 +63,11 @@
             Todos
         </button>
 
+        <button onclick="filtrar('activo', this)"
+            class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
+            Activos
+        </button>
+
         <button onclick="filtrar('1', this)" class="filtro-btn bg-surface-variant text-on-surface-variant px-6 py-2.5 rounded-full font-bold text-sm">
             Aprobados
         </button>
@@ -71,8 +84,14 @@
         @foreach($tickets as $ticket)
 
         @for($i = 1; $i <= $ticket->cantidad; $i++)
+             @php
+                $esActivo = $ticket->sorteo &&
+                            $ticket->sorteo->active == 1 &&
+                            \Carbon\Carbon::parse($ticket->sorteo->date)->gte(now());
+            @endphp
             <div class="ticket-shape bg-surface-container-highest text-white p-6 shadow-2xl ticket-item"
-                data-estado="{{ $ticket->aprobado }}">
+                data-estado="{{ $ticket->aprobado }}"
+                data-activo="{{ $esActivo ? '1' : '0' }}">
 
                 <!-- Header -->
                 <div class="flex justify-between items-center border-b border-dashed border-white/20 pb-4 mb-4">
@@ -134,22 +153,33 @@
         const items = document.querySelectorAll('.ticket-item');
         const botones = document.querySelectorAll('.filtro-btn');
 
-        // 🔹 FILTRO
         items.forEach(item => {
+
             if (tipo === 'todos') {
+
                 item.style.display = 'block';
+
+            } else if (tipo === 'activo') {
+
+                item.style.display =
+                    item.dataset.activo === '1'
+                        ? 'block'
+                        : 'none';
+
             } else {
-                item.style.display = item.dataset.estado === tipo ? 'block' : 'none';
+
+                item.style.display =
+                    item.dataset.estado === tipo
+                        ? 'block'
+                        : 'none';
             }
         });
 
-        // 🔹 RESET estilos de botones
         botones.forEach(b => {
             b.classList.remove('bg-primary', 'text-on-primary-container');
             b.classList.add('bg-surface-variant', 'text-on-surface-variant');
         });
 
-        // 🔹 ACTIVAR botón actual
         btn.classList.remove('bg-surface-variant', 'text-on-surface-variant');
         btn.classList.add('bg-primary', 'text-on-primary-container');
     }

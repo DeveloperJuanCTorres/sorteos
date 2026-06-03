@@ -24,15 +24,27 @@ class TicketController extends Controller
 
         $tickets = Ticket::with('sorteo')
                     ->where('dni', $dni)
+                    ->orderBy('id', 'desc')
                     ->get();
 
         // separar por estado
         $aprobados = $tickets->where('aprobado', 1);
         $pendientes = $tickets->where('aprobado', 0);
 
+        // NUEVO
+        $activos = $tickets->filter(function ($ticket) {
+
+            if (!$ticket->sorteo) {
+                return false;
+            }
+
+            return $ticket->sorteo->active == 1
+                && \Carbon\Carbon::parse($ticket->sorteo->date)->gte(now());
+        });
+
         $sinResultados = $tickets->isEmpty();
 
-        return view('tickets', compact('tickets', 'aprobados', 'pendientes', 'empresa', 'sinResultados'))->with('busqueda', true);
+        return view('tickets', compact('tickets', 'aprobados', 'pendientes', 'activos', 'empresa', 'sinResultados'))->with('busqueda', true);
     }
 
     public function store(Request $request)
