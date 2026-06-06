@@ -125,8 +125,8 @@
                 <div class="border-t border-dashed border-white/20 pt-4 flex justify-between items-center">
                     
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md">
-                        <span class="text-[10px] uppercase tracking-widest opacity-80">Ticket</span>
-                        <span class="font-mono text-sm font-semibold">
+                        <span class="text-[14px] uppercase tracking-widest opacity-80">Ticket</span>
+                        <span class="font-mono text-lg font-semibold">
                             #{{ str_pad($ticket->id, 6, '0', STR_PAD_LEFT) }}{{$i}}
                         </span>
                     </div>
