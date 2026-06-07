@@ -710,34 +710,201 @@
     actualizarContador();
 </script>
 
-<!-- <script>
-    document.getElementById('formRegistro').addEventListener('submit', function(e) {
+<script>
+    const formRegistro = document.getElementById('formRegistro');
+    const btnEnviar = document.getElementById('btnEnviarRegistro');
+
+    formRegistro.addEventListener('submit', function(e) {
+
         e.preventDefault();
+
+        const tipo = document.querySelector('[name="tipo_documento"]').value;
+        const numero = document.querySelector('[name="numero_documento"]').value.trim();
+        const nombres = document.querySelector('[name="nombres"]').value.trim();
+        const apellidos = document.querySelector('[name="apellidos"]').value.trim();
+        const telefono = document.querySelector('[name="telefono"]').value.trim();
+        const file = document.querySelector('[name="comprobante"]').files[0];
+
+        const regexTexto = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+        const regexNumero = /^[0-9]+$/;
+        const regexTelefono = /^[0-9]{9}$/;
+
+        // VALIDACIONES
+
+        if (!regexTexto.test(nombres)) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Dato inválido',
+                text: 'Nombres inválidos'
+            });
+            return;
+        }
+
+        if (!regexTexto.test(apellidos)) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Dato inválido',
+                text: 'Apellidos inválidos'
+            });
+            return;
+        }
+
+        if (tipo === 'dni') {
+
+            if (!regexNumero.test(numero) || (numero.length !== 7 && numero.length !== 8)) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'DNI inválido',
+                    text: 'El DNI debe tener 7 u 8 dígitos numéricos'
+                });
+
+                return;
+            }
+        }
+
+        if (tipo === 'ce') {
+
+            if (numero.length < 9) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Documento inválido',
+                    text: 'Carnet de extranjería inválido'
+                });
+
+                return;
+            }
+        }
+
+        if (tipo === 'pasaporte') {
+
+            if (numero.length < 6) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Documento inválido',
+                    text: 'Pasaporte inválido'
+                });
+
+                return;
+            }
+        }
+
+        if (!regexTelefono.test(telefono)) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Teléfono inválido',
+                text: 'El teléfono debe tener 9 dígitos'
+            });
+
+            return;
+        }
+
+        if (file) {
+
+            const allowedTypes = [
+                'image/jpeg',
+                'image/png',
+                'image/jpg'
+            ];
+
+            if (!allowedTypes.includes(file.type)) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Archivo inválido',
+                    text: 'Solo se permiten imágenes JPG o PNG'
+                });
+
+                return;
+            }
+
+            if (file.size > 2 * 1024 * 1024) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Archivo demasiado grande',
+                    text: 'La imagen no debe superar los 2 MB'
+                });
+
+                return;
+            }
+        }
+
+        // DESHABILITAR BOTÓN
+        btnEnviar.disabled = true;
+
+        const textoOriginal = btnEnviar.innerHTML;
+
+        btnEnviar.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Registrando...
+        `;
 
         let formData = new FormData(this);
 
         fetch("{{ route('tickets.store') }}", {
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
-                    document.getElementById('formRegistro').reset();
+            method: "POST",
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
 
-                    let modal = bootstrap.Modal.getInstance(document.getElementById('modalRegistro'));
-                    modal.hide();
-                }
-            })
-            .catch(err => console.error(err));
+            if (data.success) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registro exitoso',
+                    text: data.message,
+                    confirmButtonText: 'Aceptar'
+                });
+
+                formRegistro.reset();
+
+                let modal = bootstrap.Modal.getInstance(
+                    document.getElementById('modalRegistro')
+                );
+
+                modal.hide();
+
+            } else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.message || 'Ocurrió un error'
+                });
+
+            }
+
+        })
+        .catch(error => {
+
+            console.error(error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error del servidor',
+                text: 'Ocurrió un problema al registrar el ticket'
+            });
+
+        })
+        .finally(() => {
+
+            btnEnviar.disabled = false;
+            btnEnviar.innerHTML = textoOriginal;
+
+        });
+
     });
-</script> -->
+</script>
 
-<script>
+<!-- <script>
     const formRegistro = document.getElementById('formRegistro');
     const btnEnviar = document.getElementById('btnEnviarRegistro');
 
@@ -823,9 +990,9 @@
             });
 
     });
-</script>
+</script> -->
 
-<script>
+<!-- <script>
     document.getElementById('formRegistro').addEventListener('submit', function(e) {
 
         const tipo = document.querySelector('[name="tipo_documento"]').value;
@@ -840,7 +1007,7 @@
         const regexNumero = /^[0-9]+$/;
         const regexTelefono = /^[0-9]{9}$/;
 
-        // ❌ Validaciones
+        
         if (!regexTexto.test(nombres)) {
             alert('Nombres inválidos');
             e.preventDefault();
@@ -854,8 +1021,8 @@
         }
 
         if (tipo === 'dni') {
-            if (!regexNumero.test(numero) || numero.length !== 8) {
-                alert('El DNI debe tener 8 dígitos numéricos');
+            if (!regexNumero.test(numero) || (numero.length !== 7 && numero.length !== 8)) {
+                alert('El DNI debe tener 7 u 8 dígitos numéricos');
                 e.preventDefault();
                 return;
             }
@@ -883,7 +1050,6 @@
             return;
         }
 
-        // 📎 Validar archivo
         if (file) {
             const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
             if (!allowedTypes.includes(file.type)) {
@@ -900,7 +1066,7 @@
         }
 
     });
-</script>
+</script> -->
 
 <script>
     // Solo números en documento

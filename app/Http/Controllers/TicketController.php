@@ -57,8 +57,8 @@ class TicketController extends Controller
                 'required',
                 'string',
                 function ($attr, $value, $fail) use ($request) {
-                    if ($request->tipo_documento === 'dni' && !preg_match('/^\d{8}$/', $value)) {
-                        $fail('El DNI debe tener 8 dígitos.');
+                    if ($request->tipo_documento === 'dni' && !preg_match('/^\d{7,8}$/', $value)) {
+                        $fail('El DNI debe tener 7 u 8 dígitos.');
                     }
                     if ($request->tipo_documento === 'ce' && strlen($value) < 9) {
                         $fail('Carnet inválido.');
