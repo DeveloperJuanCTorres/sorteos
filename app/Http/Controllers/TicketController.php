@@ -125,6 +125,15 @@ class TicketController extends Controller
         return view('tickets.print', compact('tickets'));
     }
 
+    public function exportThermal(Request $request)
+    {
+        $tickets = Ticket::where('sorteo_id', $request->raffle_id)
+            ->where('aprobado',1)
+            ->get();
+
+        return view('tickets.thermal',compact('tickets'));
+    }
+
     public function exportExcel(Request $request)
     {
         return Excel::download(new TicketsExport($request->raffle_id), 'tickets.xlsx');

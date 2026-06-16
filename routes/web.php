@@ -53,6 +53,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tickets/exportar', [TicketController::class, 'exportView'])->name('tickets.export.view');
     Route::get('/admin/tickets/export/excel', [TicketController::class, 'exportExcel'])->name('tickets.export.excel');
     Route::get('/admin/tickets/export/print', [TicketController::class, 'exportPrint'])->name('tickets.export.print');
+
+    Route::get('/admin/tickets/export/thermal', [TicketController::class,'exportThermal'])->name('tickets.export.thermal');
 });
 
 

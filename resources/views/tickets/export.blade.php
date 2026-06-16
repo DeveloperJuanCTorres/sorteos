@@ -26,8 +26,13 @@
 
             <button type="submit"
                 class="px-6 py-3 bg-primary text-white rounded-xl font-bold">
-                Imprimir Tickets
+                Imprimir A4
             </button>
+
+            <a href="#" onclick="printThermal()"
+                class="px-6 py-3 bg-orange-600 text-white rounded-xl font-bold">
+                Imprimir Ticketera 80mm
+            </a>
 
             <a href="#" onclick="exportExcel()"
                 class="px-6 py-3 bg-green-600 text-white rounded-xl font-bold">
@@ -41,14 +46,29 @@
 </main>
 
 <script>
-function exportExcel(){
-    const raffle = document.querySelector('[name="raffle_id"]').value;
-    if(!raffle){
-        alert('Selecciona un sorteo');
-        return;
+    function exportExcel(){
+        const raffle = document.querySelector('[name="raffle_id"]').value;
+        if(!raffle){
+            alert('Selecciona un sorteo');
+            return;
+        }
+        window.location.href = `/admin/tickets/export/excel?raffle_id=${raffle}`;
     }
-    window.location.href = `/admin/tickets/export/excel?raffle_id=${raffle}`;
-}
+</script>
+
+<script>
+    function printThermal(){
+
+        const raffle = document.querySelector('[name="raffle_id"]').value;
+
+        if(!raffle){
+            alert('Selecciona un sorteo');
+            return;
+        }
+
+        window.open(`/admin/tickets/export/thermal?raffle_id=${raffle}`,'_blank');
+
+    }
 </script>
 
 @endsection
